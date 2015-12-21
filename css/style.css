@@ -1225,13 +1225,13 @@ a.article-title:hover {
   color: #ddd;
 }
 #footer {
-  background: #262a30;
+  background: #ccc;
   padding: 50px 0;
   border-top: 1px solid #ddd;
   color: #999;
 }
 #footer a {
-  color: #e32d40;
+  color: #a3a3a3;
   text-decoration: none;
 }
 #footer a:hover {
@@ -1240,6 +1240,53 @@ a.article-title:hover {
 #footer-info {
   line-height: 1.6em;
   font-size: 0.85em;
+}
+#social-font {
+  float: right;
+  display: block;
+  width: 45%;
+}
+#social-font a {
+  float: right;
+  display: block;
+  width: 14%;
+  color: #fff;
+  font-size: 34px;
+  padding: 0.3em;
+}
+#social-font a:hover {
+  text-decoration: none;
+}
+@media tablet {
+  #social-font a {
+    padding: 0.3em;
+  }
+}
+#social-font a:hover:before {
+  color: #4876ff;
+}
+#social-font a[title="weibo"]::before,
+#social-font a[title="twitter"]::before,
+#social-font a[title="github"]::before,
+#social-font a[title="facebook"]::before,
+#social-font a[title="linkedin"]::before {
+  font-family: FontAwesome;
+  -webkit-font-smoothing: ;
+}
+#social-font a[title="weibo"]::before {
+  content: "\f18a";
+}
+#social-font a[title="twitter"]::before {
+  content: "\f099";
+}
+#social-font a[title="github"]::before {
+  content: "\f09b";
+}
+#social-font a[title="facebook"]::before {
+  content: "\f09a";
+}
+#social-font a[title="linkedin"]::before {
+  content: "\f08c";
 }
 .article-entry pre,
 .article-entry .highlight {
