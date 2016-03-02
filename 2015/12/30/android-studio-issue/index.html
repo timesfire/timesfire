@@ -4,17 +4,51 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015 | 梦萌的小case</title>
+  <title>Android Stuido 使用过程中遇到的问题 | 梦萌的小case</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="梦萌的小case">
-<meta property="og:url" content="http://dreamhigh.club/archives/2015/index.html">
+  <meta name="description" content="1、新建Java library 项目编译时出错：Gradle Error:Cause: peer not authenticated
+将build.gradle文件里的：
+
+repositories {
+     jcenter()
+}
+
+替换为：
+repositories {
+     jcenter
+         {
+           url &apos;http://jcenter.bint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Stuido 使用过程中遇到的问题">
+<meta property="og:url" content="http://dreamhigh.club/2015/12/30/android-studio-issue/index.html">
 <meta property="og:site_name" content="梦萌的小case">
-<meta property="og:description">
+<meta property="og:description" content="1、新建Java library 项目编译时出错：Gradle Error:Cause: peer not authenticated
+将build.gradle文件里的：
+
+repositories {
+     jcenter()
+}
+
+替换为：
+repositories {
+     jcenter
+         {
+           url &apos;http://jcenter.bint">
+<meta property="og:updated_time" content="2015-12-30T06:35:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="梦萌的小case">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Android Stuido 使用过程中遇到的问题">
+<meta name="twitter:description" content="1、新建Java library 项目编译时出错：Gradle Error:Cause: peer not authenticated
+将build.gradle文件里的：
+
+repositories {
+     jcenter()
+}
+
+替换为：
+repositories {
+     jcenter
+         {
+           url &apos;http://jcenter.bint">
   
     <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
   
@@ -81,191 +115,82 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/30/android-studio-issue/" class="archive-article-date">
-  <time datetime="2015-12-30T06:35:43.000Z" itemprop="datePublished">12月 30</time>
+      <section id="main"><article id="post-android-studio-issue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/30/android-studio-issue/" class="article-date">
+  <time datetime="2015-12-30T06:35:43.000Z" itemprop="datePublished">2015-12-30</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/android-studio-issue/">Android Stuido 使用过程中遇到的问题</a>
+    <h1 class="article-title" itemprop="name">
+      Android Stuido 使用过程中遇到的问题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/30/android-new-skill/" class="archive-article-date">
-  <time datetime="2015-12-30T01:16:18.000Z" itemprop="datePublished">12月 30</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/android-new-skill/">android技术趋势</a>
-    </h1>
-  
+        <h3 id="1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated"><a href="#1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated" class="headerlink" title="1、新建Java library 项目编译时出错：Gradle Error:Cause: peer not authenticated"></a>1、新建Java library 项目编译时出错：<code>Gradle Error:Cause: peer not authenticated</code></h3><blockquote>
+<p>将<code>build.gradle</code>文件里的：</p>
+</blockquote>
+<pre><code class="bash">repositories {
+     jcenter()
+}
+</code></pre>
+<p>替换为：</p>
+<pre><code class="bash">repositories {
+     jcenter
+         {
+           url <span class="string">'http://jcenter.bintray.com'</span>
+         }
+}
+</code></pre>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/23/git-simple-usage/" class="archive-article-date">
-  <time datetime="2015-12-23T07:08:40.000Z" itemprop="datePublished">12月 23</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/23/git-simple-usage/">Git简单用法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/18/Python之环境工具篇/" class="archive-article-date">
-  <time datetime="2015-12-18T04:21:00.000Z" itemprop="datePublished">12月 18</time>
-</a>
+    </div>
+    <footer class="article-footer">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/18/Python之环境工具篇/">Python学习</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/17/hexo-issue/" class="archive-article-date">
-  <time datetime="2015-12-17T08:49:21.000Z" itemprop="datePublished">12月 17</time>
-</a>
+        <a data-url="http://dreamhigh.club/2015/12/30/android-studio-issue/" data-id="cilal5s7b000hxn0cidofb67z" class="article-share-link" data-share="baidu">分享到</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/17/hexo-issue/">hexo使用问题</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/16/mac-os-skill/" class="archive-article-date">
-  <time datetime="2015-12-16T05:40:00.000Z" itemprop="datePublished">12月 16</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/16/mac-os-skill/">Mac 使用常见问题汇集</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/15/python-start/" class="archive-article-date">
-  <time datetime="2015-12-15T06:41:30.000Z" itemprop="datePublished">12月 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/15/python-start/">Python学习起始</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AS/">AS</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/15/Flask使用教程/" class="archive-article-date">
-  <time datetime="2015-12-15T05:06:36.000Z" itemprop="datePublished">12月 15</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/15/Flask使用教程/">Flask 使用教程</a>
-    </h1>
+    <a href="/2016/01/01/new-year-declare/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          新年物语
+        
+      </div>
+    </a>
   
+  
+    <a href="/2015/12/30/android-new-skill/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">android技术趋势</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/12/android-studio-unit-test/" class="archive-article-date">
-  <time datetime="2015-12-12T08:02:36.000Z" itemprop="datePublished">12月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/12/android-studio-unit-test/">Android Studio 单元测试</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 </section>
       
       <aside id="sidebar">
