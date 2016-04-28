@@ -83,6 +83,129 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-helpful-websites" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/30/helpful-websites/" class="article-date">
+  <time datetime="2016-03-30T06:47:54.000Z" itemprop="datePublished">2016-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/30/helpful-websites/">有用的网站整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1_u3001_u67E5_u770Bjar_u5305_u7684_u65B9_u6CD5_u6570"><a href="#1_u3001_u67E5_u770Bjar_u5305_u7684_u65B9_u6CD5_u6570" class="headerlink" title="1、查看jar包的方法数"></a>1、查看jar包的方法数</h5><p><a href="http://www.methodscount.com">http://www.methodscount.com</a></p>
+<h5 id="2_u3001_u67E5_u770Bapk_u7684_u65B9_u6CD5_u6570"><a href="#2_u3001_u67E5_u770Bapk_u7684_u65B9_u6CD5_u6570" class="headerlink" title="2、查看apk的方法数"></a>2、查看apk的方法数</h5><p><a href="http://inloop.github.io/apk-method-count">http://inloop.github.io/apk-method-count</a></p>
+<h4 id="3_u3001TinyPng"><a href="#3_u3001TinyPng" class="headerlink" title="3、TinyPng"></a>3、TinyPng</h4><p><a href="https://tinypng.com">https://tinypng.com</a>  </p>
+<p>TinyPng 是一个图片压缩工具，可能有些人感觉这个工具应该给设计师使用，我觉得也是。不过有些时候，设计师给你出了个1920* 1080 的启动页，一张图片，1M 左右，我也是泪奔了，感觉设计师说话的时间，估计我们都压缩完了，自己动手，丰衣足食。而且它还提供了API，对不同语言都还有提供了插件，比如Java 就提供了Maven 的支持。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/03/30/helpful-websites/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="cink1bl5p000oe00c2xzqfhsn" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mac-command-line-tool-use" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/29/mac-command-line-tool-use/" class="article-date">
+  <time datetime="2016-03-29T07:57:43.000Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/mac-command-line-tool-use/">Mac常见命令行工具的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1_u3001brew_Mac_u4E0B_u7684_u5305_u7BA1_u7406_u5DE5_u5177"><a href="#1_u3001brew_Mac_u4E0B_u7684_u5305_u7BA1_u7406_u5DE5_u5177" class="headerlink" title="1、brew Mac下的包管理工具"></a>1、brew Mac下的包管理工具</h4><p>常用命令:</p>
+<blockquote>
+<p>列出软件： <code>brew list</code><br>安装软件： <code>brew install sss</code><br>卸载软件： <code>brew uninstall sss</code><br>搜索软件： <code>brew search /sss*/</code><br>更新brew <code>brew update</code><br>显示软件信息 <code>brew info</code></p>
+</blockquote>
+<h4 id="2_u3001exiftool__u67E5_u770B_u7F16_u8F91_u56FE_u7247_u5143_u6570_u636E_u7684_u5DE5_u5177"><a href="#2_u3001exiftool__u67E5_u770B_u7F16_u8F91_u56FE_u7247_u5143_u6570_u636E_u7684_u5DE5_u5177" class="headerlink" title="2、exiftool 查看编辑图片元数据的工具"></a>2、exiftool 查看编辑图片元数据的工具</h4><p>目的：</p>
+<blockquote>
+<ul>
+<li>通过修改图片元数据信息，避免AS在编译时抛出 <code>libpng warning: iCCP: Not recognizing known sRGB profile that has been edited</code> </li>
+<li>减小图片大小</li>
+</ul>
+</blockquote>
+<p>安装exiftool  </p>
+<blockquote>
+<p><code>brew install exiftool</code>  </p>
+</blockquote>
+<p>查看图片元数据信息   </p>
+<blockquote>
+<p><code>exiftool xxx.png</code> </p>
+</blockquote>
+<p>修改元数据信息,将创建时间向后推3个小时  </p>
+<blockquote>
+<p><code>exiftool -createdate+=3 sss.jpg</code></p>
+</blockquote>
+<p>清空元数据信息,-all后面有空格(总共有两个空格)</p>
+<blockquote>
+<p><code>exiftool -all=  sss.jpg</code></p>
+</blockquote>
+<p>批处理清空文件夹下所有图片的元数据信息</p>
+<blockquote>
+<p><code>exiftool -r -all=  文件夹路径</code></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="cink1bl5j000he00czoky84v6" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-rxandroid-detail" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/02/rxandroid-detail/" class="article-date">
@@ -105,23 +228,18 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6"><a href="#RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6" class="headerlink" title="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度"></a>RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个<code>Scheduler</code>，可以在主线程或任何给定的<code>Handler</code>上进行调度</h5><p>github <a href="https://github.com/ReactiveX/RxAndroid" target="_blank" rel="external">https://github.com/ReactiveX/RxAndroid</a></p>
-<h5 id="u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F"><a href="#u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F" class="headerlink" title="一、使用RxJava有什么好处，怎样快速入门？"></a>一、使用RxJava有什么好处，怎样快速入门？</h5><p>这里网上有比较完整的介绍，就不搬书了，对应的也有中文版翻译，请看：<br><a href="http://blog.danlew.net" target="_blank" rel="external">Dan Lew的博客</a>四篇介绍：</p>
-<blockquote>
-<p><a href="http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/" target="_blank" rel="external">Grokking RxJava, Part 1: The Basics</a>    <a href="http://blog.csdn.net/lzyzsd/article/details/41833541" target="_blank" rel="external"><code>中文翻译</code></a><br><a href="http://blog.danlew.net/2014/09/22/grokking-rxjava-part-2/" target="_blank" rel="external">Grokking RxJava, Part 2: Operator, Operator</a> <a href="http://blog.csdn.net/lzyzsd/article/details/44094895" target="_blank" rel="external"><code>[中文翻译]</code></a><br><a href="http://blog.danlew.net/2014/09/30/grokking-rxjava-part-3/" target="_blank" rel="external">Grokking RxJava, Part 3: Reactive with Benefits</a>    <a href="http://blog.csdn.net/lzyzsd/article/details/44891933" target="_blank" rel="external"><code>中文翻译</code></a><br><a href="http://blog.danlew.net/2014/10/08/grokking-rxjava-part-4/" target="_blank" rel="external">Grokking RxJava, Part 4: Reactive Android</a>    <a href="http://blog.csdn.net/lzyzsd/article/details/45033611" target="_blank" rel="external"><code>中文翻译</code></a>  </p>
-</blockquote>
-<p>补充下<code>Dan Lew</code>博客中两个涉及到的两个模拟接口的实现  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Observable&lt;List&lt;String&gt;&gt; query(String text) &#123;</span><br><span class="line">        <span class="keyword">return</span> Observable.just(Arrays.asList(<span class="keyword">new</span> String[]&#123;<span class="string">"s1"</span>+text,<span class="string">"s2"</span>+text,<span class="string">"s3"</span>+text,<span class="string">"s4"</span>+text&#125;));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 返回网站的标题，如果404了就返回null**/</span>  </span><br><span class="line"><span class="function">Observable&lt;String&gt; <span class="title">getTitle</span><span class="params">(String URL)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"404"</span>.equals(URL))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> Observable.just(<span class="string">"title"</span> + URL);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>总结一下，RxJava让业务逻辑变的更加清晰了，有木有！<br>到这，作为一个Java程序员可能已经啪啪的在敲键盘了，而Android开发者该疑惑了，说好的<code>AndroidObservable</code> 、<code>AppObservable</code> 、<code>ViewObservable</code>怎么都找不着了，翻看一下源码也没有，why?</p>
-<p>这是因为RxAndroid版本升级了，<code>Dan Lew的博客</code>里的介绍对应的是早起的版本，最新版本1.1.0中这些类已经被移除了。RxAndroid项目的核心成员<code>JakeWharton</code>解释说    <code>为了避免RxAndroid被废弃或是成为垃圾场，大多数项目成员开始讨论关于怎样才是这个项目未来最好的方向...</code>    <a href="https://github.com/ReactiveX/RxAndroid/issues/172" target="_blank" rel="external">（原文）</a>。结果就是RxAndroid功能更加核心化，早期版本里部分已有的功能分离出去成为单独的项目。如<a href="https://github.com/JakeWharton/RxBinding" target="_blank" rel="external">RxBinding</a> 、 <a href="https://github.com/f2prateek/rx-preferences" target="_blank" rel="external">rx-preferences</a> 、 <a href="https://github.com/trello/RxLifecycle" target="_blank" rel="external">RxLifecycle</a>。想了解更多可点击<a href="http://blog.danlew.net/2015/09/01/how-to-upgrade-to-rxandroid-10/" target="_blank" rel="external">这里</a></p>
-<h5 id="u4E8C_u3001_u5173_u4E8Elambda_u5728Android_u4E2D_u7684_u4F7F_u7528"><a href="#u4E8C_u3001_u5173_u4E8Elambda_u5728Android_u4E2D_u7684_u4F7F_u7528" class="headerlink" title="二、关于lambda在Android中的使用"></a>二、关于lambda在Android中的使用</h5><p>很多介绍RxJava的文章会提到lambda.这个RxJava一起使用的确会使整个调用链显的更加简洁，但同时也带了一个问题，对应刚入门的同学来说，代码的可读性将大大降低。Android  Studio 中现已对Java代码做类lambda格式化，Android官方目前也没有lambda的支持，所以个人不建议在Android项目中使用lambda,有不同意见欢迎拍砖！</p>
-<h5 id="u4E09_u3001_u4ECB_u7ECD_u7528_u6CD5_u548C_u539F_u7406_u7684_u4E00_u4E9B_u597D_u7684_u6587_u7AE0"><a href="#u4E09_u3001_u4ECB_u7ECD_u7528_u6CD5_u548C_u539F_u7406_u7684_u4E00_u4E9B_u597D_u7684_u6587_u7AE0" class="headerlink" title="三、介绍用法和原理的一些好的文章"></a>三、介绍用法和原理的一些好的文章</h5><p><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">给 Android 开发者的 RxJava 详解</a></p>
-
+        <h5 id="RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6"><a href="#RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6" class="headerlink" title="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度"></a>RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个<code>Scheduler</code>，可以在主线程或任何给定的<code>Handler</code>上进行调度</h5><p>github <a href="https://github.com/ReactiveX/RxAndroid">https://github.com/ReactiveX/RxAndroid</a></p>
+<h5 id="u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F_3C_21-more-_3E"><a href="#u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F_3C_21-more-_3E" class="headerlink" title="一、使用RxJava有什么好处，怎样快速入门？
+        
+          <p class="article-more-link">
+            <a href="/2016/03/02/rxandroid-detail/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cilhp80jz0000550ctjc70i1i" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cink1bl4y0000e00c2m3t4fwt" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -130,6 +248,56 @@ var _hmt = _hmt || [];
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-migrate-maven-to-gradle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/20/migrate-maven-to-gradle/" class="article-date">
+  <time datetime="2016-01-20T07:59:00.000Z" itemprop="datePublished">2016-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/20/migrate-maven-to-gradle/">将Maven工程迁移为Gradle工程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="u524D_u8A00_uFF1A"><a href="#u524D_u8A00_uFF1A" class="headerlink" title="前言："></a>前言：</h4><p>github上 很多开源项目是用maven构建的，比如okhttp,retrofit,现在android开发都迁移到Android Studio上来了，要直接导入看源码还是有点费劲。AS 1.5版本是能直接导入maven项目的，升级到2.0后，导入没有反应，也不会自动下载依赖包。（蛋疼）不知Google为啥把这个功能给移除了。这里就介绍一下手动迁移maven工程（Mac环境）</p>
+<h4 id="u4E00_u3001_u5C06_u4E0B_u8F7D_u7684maven_u5DE5_u7A0B_u7528AS_u6253_u5F00_uFF0CFile_-_26gt_3B_Open"><a href="#u4E00_u3001_u5C06_u4E0B_u8F7D_u7684maven_u5DE5_u7A0B_u7528AS_u6253_u5F00_uFF0CFile_-_26gt_3B_Open" class="headerlink" title="一、将下载的maven工程用AS打开，File -&gt; Open"></a>一、将下载的maven工程用AS打开，<code>File</code> -&gt; <code>Open</code></h4><h4 id="u4E8C_u3001_u8FD0_u884Cgradle_u547D_u4EE4_uFF0C_u5982_u679C_u7535_u8111_u4E0A_u6CA1_u6709gradle_u547D_u4EE4_u73AF_u5883_u5C31_u5148_u4E0B_u8F7D_u4E00_u4E2A"><a href="#u4E8C_u3001_u8FD0_u884Cgradle_u547D_u4EE4_uFF0C_u5982_u679C_u7535_u8111_u4E0A_u6CA1_u6709gradle_u547D_u4EE4_u73AF_u5883_u5C31_u5148_u4E0B_u8F7D_u4E00_u4E2A" class="headerlink" title="二、运行gradle命令，如果电脑上没有gradle命令环境就先下载一个"></a>二、运行gradle命令，如果电脑上没有gradle命令环境就先下载一个</h4><blockquote>
+<p>1、参照：<a href="http://gradle.org/migrating-a-maven-build-to-gradle/" target="_blank" rel="external">http://gradle.org/migrating-a-maven-build-to-gradle/</a><br>2、依次运行下面的命令，示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Users/shujian/android/gradle/bin/gradle init    </span><br><span class="line">/Users/shujian/android/gradle/bin/gradle build</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A"><a href="#u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A" class="headerlink" title="三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法："></a>三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法：</h4><blockquote>
+<p>1、 新建一个module,选择java library。此时pom项目都会出现在Android模式下，现在再把<br>刚才新建的module删除即可<br>2、不新建module,将项目关闭重新打开，此时会会有是否应用gradle wrapper 的提示，选择应<br>用建议，OK！</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/01/20/migrate-maven-to-gradle/" data-id="cink1bl5b000ae00ccty3o2fm" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li></ul>
 
     </footer>
   </div>
@@ -167,27 +335,16 @@ var _hmt = _hmt || [];
 <p>密匙库文件为 d:\project\360Wallpaper.keystore<br>别名(Alias)为QIHU360</p>
 <p>那么签名的命令为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verbose -keystore d:\project\<span class="number">360</span>Wallpaper.keystore -signedjar d:\qihusign.apk d:\Qihuunsign.apk QIHU360</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h4 id="2_u3001_u5C06Google_play_u4E0A_u7684_u5E94_u7528_u4E0B_u8F7D_u5230_u7535_u8111"><a href="#2_u3001_u5C06Google_play_u4E0A_u7684_u5E94_u7528_u4E0B_u8F7D_u5230_u7535_u8111" class="headerlink" title="2、将Google play上的应用下载到电脑"></a>2、将Google play上的应用下载到电脑</h4><hr>
-<blockquote>
-<ul>
-<li>用账号登录<a href="https://play.google.com" target="_blank" rel="external">Google play</a></li>
-<li>找到想要下载的应用，复制该应用链接地址</li>
-<li>打开<a href="http://apps.evozi.com/apk-downloader/" target="_blank" rel="external">APK Downloader</a>将复制的地址粘贴到指定的输入框中，并按照提示进行操作</li>
-<li>附：备用下载网站<a href="http://apk-dl.com/" target="_blank" rel="external">apk-dl</a>、<a href="https://apkpure.com/" target="_blank" rel="external">apkpure</a>、<a href="http://apkleecher.com/" target="_blank" rel="external">apkleecher</a>、<a href="http://www.coolapk.com/" target="_blank" rel="external">酷安网</a>、<a href="http://globalapk.co/" target="_blank" rel="external">globalapk</a></li>
-</ul>
-</blockquote>
-<h4 id="3_u3001Eclipse_u5BFC_u51FAjavadoc_u4E71_u7801"><a href="#3_u3001Eclipse_u5BFC_u51FAjavadoc_u4E71_u7801" class="headerlink" title="3、Eclipse导出javadoc乱码"></a>3、Eclipse导出javadoc乱码</h4><hr>
-<blockquote>
-<ul>
-<li>在Eclipse里 export 选 JavaDoc，在向导的最后一页的Extra JavaDoc Options 里填上参数即可。比如项目采用的是<code>UTF－8</code>的编码就填：<code>-encoding UTF-8 -charset UTF-8</code></li>
-</ul>
-</blockquote>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/01/04/android-look/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="cilhp80l5000p550czz1eprgs" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="cink1bl5z000ye00ckhuk3s2d" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -233,7 +390,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/01/new-year-declare/" data-id="cilhp80ke0008550c8zr51g49" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/01/new-year-declare/" data-id="cink1bl590008e00c2jntcz6g" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -273,24 +430,14 @@ var _hmt = _hmt || [];
         <h3 id="1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated"><a href="#1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated" class="headerlink" title="1、新建Java library 项目编译时出错：Gradle Error:Cause: peer not authenticated"></a>1、新建Java library 项目编译时出错：<code>Gradle Error:Cause: peer not authenticated</code></h3><blockquote>
 <p>将<code>build.gradle</code>文件里的：</p>
 </blockquote>
-<pre><code class="bash">repositories {
-     jcenter()
-}
-</code></pre>
-<p>替换为：</p>
-<pre><code class="bash">repositories {
-     jcenter
-         {
-           url <span class="string">'http://jcenter.bintray.com'</span>
-         }
-}
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">     jcenter()</span><br><span class="line">&#125;      </span><br><span class="line">```     </span><br><span class="line">替换为：</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">repositories &#123;</span><br><span class="line">     jcenter</span><br><span class="line">         &#123;</span><br><span class="line">           url <span class="string">'http://jcenter.bintray.com'</span></span><br><span class="line">         &#125;</span><br><span class="line">&#125;      </span><br><span class="line">```     </span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"><span class="comment">### 2、部分导入项目，在Terminal中输入./gradlew 命令会出现</span></span><br><span class="line">``` bash</span><br><span class="line">$ ./gradlew -v</span><br><span class="line">Downloading https://services.gradle.org/distributions/gradle-<span class="number">2.4</span>-all.zip</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>查看了一下，在系统的<code>GRADLE_USER_HOME/.gradle/wrapper/dists</code>目录下已经有了gradle-2.4-all.zip包，为何还要重新下载？<br>这是因为项目工程gradle/wrapper下gradle-wrapper.jar引起的，用一个比较新的替换即可</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/30/android-studio-issue/" data-id="cilhp80kz000l550cymmz37z3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/30/android-studio-issue/" data-id="cink1bl5v000ue00cfcquz77b" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -307,184 +454,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-android-new-skill" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/30/android-new-skill/" class="article-date">
-  <time datetime="2015-12-30T01:16:18.000Z" itemprop="datePublished">2015-12-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/30/android-new-skill/">android技术趋势</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u6982_u8981_uFF1A"><a href="#u6982_u8981_uFF1A" class="headerlink" title="概要："></a>概要：</h3><p><img src="/images/QQ20160115-1@2x.png" alt="概要图"></p>
-<h3 id="u8BED_u8A00"><a href="#u8BED_u8A00" class="headerlink" title="语言"></a>语言</h3><ul>
-<li>Kotlin</li>
-<li>React Native</li>
-<li>Sky:</li>
-</ul>
-<h3 id="u5F00_u53D1_u6A21_u5F0F"><a href="#u5F00_u53D1_u6A21_u5F0F" class="headerlink" title="开发模式"></a>开发模式</h3><ul>
-<li>Dagger 2</li>
-<li>MVP</li>
-<li>RxAndroid</li>
-<li>MVVM</li>
-<li>插件化</li>
-<li>Hybrid</li>
-</ul>
-<h3 id="u8BBE_u8BA1"><a href="#u8BBE_u8BA1" class="headerlink" title="设计"></a>设计</h3><ul>
-<li>Material Design</li>
-<li>Sketch</li>
-</ul>
-<h3 id="u7B2C_u4E09_u65B9_u5E93"><a href="#u7B2C_u4E09_u65B9_u5E93" class="headerlink" title="第三方库"></a>第三方库</h3><ul>
-<li><a href="https://github.com/facebook/fresco" target="_blank" rel="external">fresco</a> facebook 出品的图片加载库</li>
-</ul>
-<h3 id="u5DE5_u5177"><a href="#u5DE5_u5177" class="headerlink" title="工具"></a>工具</h3><ul>
-<li><a href="http://infer.liaohuqiu.net" target="_blank" rel="external">infer</a> Facebook 出品的一个代码静态检测工具,可用于Android和Ios</li>
-<li><a href="https://github.com/square/leakcanary" target="_blank" rel="external">LeakCanary</a> Square出品的检测内存泄露工具</li>
-<li><a href="https://github.com/alibaba/dexposed" target="_blank" rel="external">dexposed</a> Alibaba出品 Android热修复</li>
-<li><a href="https://github.com/google/enjarify" target="_blank" rel="external">enjarify</a> Google出品的逆向工具</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2015/12/30/android-new-skill/" data-id="cilhp80l2000o550cd5ytpow4" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2015/12/30/android-new-skill/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git-simple-usage" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/23/git-simple-usage/" class="article-date">
-  <time datetime="2015-12-23T07:08:40.000Z" itemprop="datePublished">2015-12-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/git-simple-usage/">Git简单用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u672C_u5730_u9879_u76EE_u4E0A_u4F20_u5230github"><a href="#u672C_u5730_u9879_u76EE_u4E0A_u4F20_u5230github" class="headerlink" title="本地项目上传到github"></a>本地项目上传到github</h3><blockquote>
-<ul>
-<li>在github上新建 repositories</li>
-<li>在终端中切换到本地项目文件夹路径下，初始化 <code>git init</code></li>
-<li>添加github远程仓库 <code>git remote add origin &lt;server&gt;</code> ,<code>server</code>替换成仓库路径，如：<strong><a href="https://github.com/" target="_blank" rel="external">https://github.com/</a>&lt;用户名&gt;/&lt;仓库名&gt;.git</strong></li>
-<li>将本地文件添加到git: <code>git add &lt;filename&gt;</code>,添加全部可用<code>git add *</code></li>
-<li>提交 <code>git commit -m &quot;提交注释&quot;</code></li>
-<li>将本地项目文件上传到仓库 <code>git push origin master</code></li>
-</ul>
-</blockquote>
-<p>over!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2015/12/23/git-simple-usage/" data-id="cilhp80kp000g550c3uowf4db" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2015/12/23/git-simple-usage/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Python之环境工具篇" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/18/Python之环境工具篇/" class="article-date">
-  <time datetime="2015-12-18T04:21:00.000Z" itemprop="datePublished">2015-12-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/18/Python之环境工具篇/">Python学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="u4E00_u3001_u5B66_u4E60_u80CC_u666F_uFF1A"><a href="#u4E00_u3001_u5B66_u4E60_u80CC_u666F_uFF1A" class="headerlink" title="一、学习背景："></a>一、学习背景：</h4><p>大学时学习过c,java,接触过.net与php,现在的工作的主力编程语言是Java。。</p>
-<h4 id="u73AF_u5883_u5B89_u88C5"><a href="#u73AF_u5883_u5B89_u88C5" class="headerlink" title="环境安装"></a>环境安装</h4><p>Mac 自带有Python2.6 建议升级到2.7</p>
-<h4 id="IDE_u9009_u62E9"><a href="#IDE_u9009_u62E9" class="headerlink" title="IDE选择"></a>IDE选择</h4><p>强烈推荐pycharm ,这个是收费的，本主奔着学习的态度用了破解的版本</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/18/Python之环境工具篇/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2015/12/18/Python之环境工具篇/" data-id="cilhp80l7000r550cy22u71rw" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2015/12/18/Python之环境工具篇/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -497,7 +469,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -506,7 +478,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
+      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
     </div>
   </div>
 
@@ -515,7 +487,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -527,23 +499,23 @@ var _hmt = _hmt || [];
       <ul>
         
           <li>
+            <a href="/2016/03/30/helpful-websites/">有用的网站整理</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/29/mac-command-line-tool-use/">Mac常见命令行工具的使用</a>
+          </li>
+        
+          <li>
             <a href="/2016/03/02/rxandroid-detail/">响应式编程框架RxAndroid使用简介</a>
           </li>
         
           <li>
+            <a href="/2016/01/20/migrate-maven-to-gradle/">将Maven工程迁移为Gradle工程</a>
+          </li>
+        
+          <li>
             <a href="/2016/01/04/android-look/">android发布相关</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/01/new-year-declare/">新年物语</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/30/android-studio-issue/">Android Stuido 使用过程中遇到的问题</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/30/android-new-skill/">android技术趋势</a>
           </li>
         
       </ul>
