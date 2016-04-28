@@ -6,16 +6,19 @@
   
   <title>响应式编程框架RxAndroid使用简介 | 梦萌的小case</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度github https://github.com/ReactiveX/RxAndroid">
+  <meta name="description" content="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度github https://github.com/ReactiveX/RxAndroid
+一、使用RxJava有什么好处，怎样快速入门？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="响应式编程框架RxAndroid使用简介">
 <meta property="og:url" content="http://dreamhigh.club/2016/03/02/rxandroid-detail/index.html">
 <meta property="og:site_name" content="梦萌的小case">
-<meta property="og:description" content="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度github https://github.com/ReactiveX/RxAndroid">
+<meta property="og:description" content="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度github https://github.com/ReactiveX/RxAndroid
+一、使用RxJava有什么好处，怎样快速入门？">
 <meta property="og:updated_time" content="2016-03-02T03:11:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式编程框架RxAndroid使用简介">
-<meta name="twitter:description" content="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度github https://github.com/ReactiveX/RxAndroid">
+<meta name="twitter:description" content="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度github https://github.com/ReactiveX/RxAndroid
+一、使用RxJava有什么好处，怎样快速入门？">
   
     <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
   
@@ -105,7 +108,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h5 id="RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6"><a href="#RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6" class="headerlink" title="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度"></a>RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个<code>Scheduler</code>，可以在主线程或任何给定的<code>Handler</code>上进行调度</h5><p>github <a href="https://github.com/ReactiveX/RxAndroid" target="_blank" rel="external">https://github.com/ReactiveX/RxAndroid</a></p>
-<h5 id="u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F_3C_21-more-_3E"><a href="#u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F_3C_21-more-_3E" class="headerlink" title="一、使用RxJava有什么好处，怎样快速入门？<a id=" more"=""></a>">一、使用RxJava有什么好处，怎样快速入门？<!--more--></h5><p>这里网上有比较完整的介绍，就不搬书了，对应的也有中文版翻译，请看：<br><a href="http://blog.danlew.net" target="_blank" rel="external">Dan Lew的博客</a>四篇介绍：</p>
+<h5 id="u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F"><a href="#u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F" class="headerlink" title="一、使用RxJava有什么好处，怎样快速入门？"></a>一、使用RxJava有什么好处，怎样快速入门？</h5><a id="more"></a>  
+<p>这里网上有比较完整的介绍，就不搬书了，对应的也有中文版翻译，请看：<br><a href="http://blog.danlew.net" target="_blank" rel="external">Dan Lew的博客</a>四篇介绍：</p>
 <blockquote>
 <p><a href="http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/" target="_blank" rel="external">Grokking RxJava, Part 1: The Basics</a>    <a href="http://blog.csdn.net/lzyzsd/article/details/41833541" target="_blank" rel="external"><code>中文翻译</code></a><br><a href="http://blog.danlew.net/2014/09/22/grokking-rxjava-part-2/" target="_blank" rel="external">Grokking RxJava, Part 2: Operator, Operator</a> <a href="http://blog.csdn.net/lzyzsd/article/details/44094895" target="_blank" rel="external"><code>[中文翻译]</code></a><br><a href="http://blog.danlew.net/2014/09/30/grokking-rxjava-part-3/" target="_blank" rel="external">Grokking RxJava, Part 3: Reactive with Benefits</a>    <a href="http://blog.csdn.net/lzyzsd/article/details/44891933" target="_blank" rel="external"><code>中文翻译</code></a><br><a href="http://blog.danlew.net/2014/10/08/grokking-rxjava-part-4/" target="_blank" rel="external">Grokking RxJava, Part 4: Reactive Android</a>    <a href="http://blog.csdn.net/lzyzsd/article/details/45033611" target="_blank" rel="external"><code>中文翻译</code></a>  </p>
 </blockquote>
@@ -120,7 +124,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cink1bl4y0000e00c2m3t4fwt" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cink242bg0000ls0cqkqqat2u" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
