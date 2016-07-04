@@ -83,6 +83,68 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-pulish-library-to-jcenter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/04/pulish-library-to-jcenter/" class="article-date">
+  <time datetime="2016-07-04T06:07:19.000Z" itemprop="datePublished">2016-07-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/04/pulish-library-to-jcenter/">发布开源库到Jcenter和Maven Central</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="u524D_u8A00_uFF1A"><a href="#u524D_u8A00_uFF1A" class="headerlink" title="前言："></a>前言：</h4><p>在开发中，经常会使用第三方库，一般是通过maven或gradle的方式引用。很方便，整个引用过程也就几行配置代码（gradle只用一行）。  </p>
+<h5 id="u4E0B_u9762_u5C31_u662F_u8BB0_u5F55_u5C06_u5C06_u81EA_u5DF1_u7684_u7684_u5E93_u5F00_u6E90_u51FA_u53BB_u7684_u6574_u4E2A_u6D41_u7A0B_uFF1A"><a href="#u4E0B_u9762_u5C31_u662F_u8BB0_u5F55_u5C06_u5C06_u81EA_u5DF1_u7684_u7684_u5E93_u5F00_u6E90_u51FA_u53BB_u7684_u6574_u4E2A_u6D41_u7A0B_uFF1A" class="headerlink" title="下面就是记录将将自己的的库开源出去的整个流程："></a>下面就是记录将将自己的的库开源出去的整个流程：</h5><p>参照<a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en" target="_blank" rel="external">https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en</a>  <a href="http://www.devtf.cn/?p=760&amp;utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">【翻译在此】</a><br>这里已经很详细了，接下来是实际操作过程中应注意的地方：</p>
+<p>1、在Mac终端中，gradle的相关命令应 <code>./gradlew xxx</code>这样写,以下都默认在Mac中</p>
+<p>2、在运行<code>./gradew install</code>时,会报  </p>
+<blockquote>
+<p>Caused by: java.lang.NoClassDefFoundError: org/gradle/api/publication/maven/internal/DefaultMavenFactory</p>
+</blockquote>
+<p>当使用的Gradle版本是2.4以上，Android插件版本是1.3.0以上的时候就会出现这个问题，这时候我们需在project的 <code>build.gradle</code> 文件中的插件版本添加一行<br><code>classpath ‘com.github.dcendents:android-maven-gradle-plugin:1.3’</code></p>
+<p>3、在运行<code>./gradlew bintrayUpload</code>时，报  </p>
+<blockquote>
+<p>What went wrong:<br>Execution failed for task ‘:library:bintrayUpload’.<br>Could not create package ‘sujian27@163.com/maven/simplify’: HTTP/1.1 401 Unauthorized [message:This resource requires authentication]</p>
+</blockquote>
+<p>这是<code>local.properites</code>中的<code>bintray.user</code>配置错误导致的。在注册bintray时，直接用github的账号注册的，这时候bintray.user应为主页显示的那个名称，而不是邮箱。</p>
+<p>4、在运行<code>./gradlew bintrayUpload</code>时，报 </p>
+<blockquote>
+<p>What went wrong:<br>Execution failed for task ‘:library:bintrayUpload’.<br>Could not upload to ‘<a href="https://api.bintray.com/content/timesfire/maven/simplify/0.1.0/com/github/timesfire/library/0.1.0/library-0.1.0.pom" target="_blank" rel="external">https://api.bintray.com/content/timesfire/maven/simplify/0.1.0/com/github/timesfire/library/0.1.0/library-0.1.0.pom</a>‘: HTTP/1.1 400 Bad Request [message:Unable to upload files: Maven group, artifact or version defined in the pom file do not match the file path ‘com/github/timesfire/library/0.1.0/library-0.1.0.pom’] </p>
+</blockquote>
+<p>这个时候我们的库已经上传到bintray上了，在对应的maven目录下也有对应的tag生成，但是不能正常引用，这是因为需要上传的库工程对应的module名称和我们配置的不一致，默认的库module名称是library，只需重命名为我们配置的名称即可，我这里是重命名为simplify。让后先将bintray上已经生成的TAG删除，重新运行上传命令即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="ciq7qjid200088i31ge8nm6xo" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool/">Tool</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-helpful-websites" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/30/helpful-websites/" class="article-date">
@@ -118,7 +180,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="cink242c4000ols0c1zk8mm66" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="ciq7qjidn000t8i31yseznj5h" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -166,7 +228,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="cink242by000hls0c0mpbz603" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="ciq7qjidh000m8i31807zs5e1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -216,7 +278,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cink242bg0000ls0cqkqqat2u" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="ciq7qjics00008i31ywaegra9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -268,7 +330,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/20/migrate-maven-to-gradle/" data-id="cink242bt000als0cp6e5w1rp" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/20/migrate-maven-to-gradle/" data-id="ciq7qjid7000f8i31avme8nh2" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -321,7 +383,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="cink242cg000yls0cue7mxugf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="ciq7qjidx00138i31705x8ogh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -367,62 +429,13 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/01/new-year-declare/" data-id="cink242br0008ls0cp9811ati" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/01/new-year-declare/" data-id="ciq7qjid5000d8i317f437ptu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点滴/">点滴</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android-studio-issue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/30/android-studio-issue/" class="article-date">
-  <time datetime="2015-12-30T06:35:43.000Z" itemprop="datePublished">2015-12-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/30/android-studio-issue/">Android Stuido 使用过程中遇到的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated"><a href="#1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated" class="headerlink" title="1、新建Java library 项目编译时出错：Gradle Error:Cause: peer not authenticated"></a>1、新建Java library 项目编译时出错：<code>Gradle Error:Cause: peer not authenticated</code></h3><blockquote>
-<p>将<code>build.gradle</code>文件里的：</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">     jcenter()</span><br><span class="line">&#125;      </span><br><span class="line">```     </span><br><span class="line">替换为：</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">repositories &#123;</span><br><span class="line">     jcenter</span><br><span class="line">         &#123;</span><br><span class="line">           url <span class="string">'http://jcenter.bintray.com'</span></span><br><span class="line">         &#125;</span><br><span class="line">&#125;      </span><br><span class="line">```     </span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"><span class="comment">### 2、部分导入项目，在Terminal中输入./gradlew 命令会出现</span></span><br><span class="line">``` bash</span><br><span class="line">$ ./gradlew -v</span><br><span class="line">Downloading https://services.gradle.org/distributions/gradle-<span class="number">2.4</span>-all.zip</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>查看了一下，在系统的<code>GRADLE_USER_HOME/.gradle/wrapper/dists</code>目录下已经有了gradle-2.4-all.zip包，为何还要重新下载？<br>这是因为项目工程gradle/wrapper下gradle-wrapper.jar引起的，用一个比较新的替换即可</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2015/12/30/android-studio-issue/" data-id="cink242cb000uls0cyuyivb87" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2015/12/30/android-studio-issue/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AS/">AS</a></li></ul>
 
     </footer>
   </div>
@@ -446,7 +459,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -455,7 +468,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
+      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
     </div>
   </div>
 
@@ -464,7 +477,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -474,6 +487,10 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/07/04/pulish-library-to-jcenter/">发布开源库到Jcenter和Maven Central</a>
+          </li>
         
           <li>
             <a href="/2016/03/30/helpful-websites/">有用的网站整理</a>
@@ -489,10 +506,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2016/01/20/migrate-maven-to-gradle/">将Maven工程迁移为Gradle工程</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/04/android-look/">android发布相关</a>
           </li>
         
       </ul>

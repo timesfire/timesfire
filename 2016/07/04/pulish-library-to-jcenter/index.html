@@ -4,30 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android发布相关 | 梦萌的小case</title>
+  <title>发布开源库到Jcenter和Maven Central | 梦萌的小case</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、第三方应用发布平台空包签名方法
-
-jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。
-例如：要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk
-密匙库文件为 d:\proje">
+  <meta name="description" content="前言：在开发中，经常会使用第三方库，一般是通过maven或gradle的方式引用。很方便，整个引用过程也就几行配置代码（gradle只用一行）。  
+下面就是记录将将自己的的库开源出去的整个流程：参照https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android发布相关">
-<meta property="og:url" content="http://dreamhigh.club/2016/01/04/android-look/index.html">
+<meta property="og:title" content="发布开源库到Jcenter和Maven Central">
+<meta property="og:url" content="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/index.html">
 <meta property="og:site_name" content="梦萌的小case">
-<meta property="og:description" content="1、第三方应用发布平台空包签名方法
-
-jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。
-例如：要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk
-密匙库文件为 d:\proje">
-<meta property="og:updated_time" content="2016-01-04T09:39:13.000Z">
+<meta property="og:description" content="前言：在开发中，经常会使用第三方库，一般是通过maven或gradle的方式引用。很方便，整个引用过程也就几行配置代码（gradle只用一行）。  
+下面就是记录将将自己的的库开源出去的整个流程：参照https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en">
+<meta property="og:updated_time" content="2016-07-04T06:07:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android发布相关">
-<meta name="twitter:description" content="1、第三方应用发布平台空包签名方法
-
-jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。
-例如：要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk
-密匙库文件为 d:\proje">
+<meta name="twitter:title" content="发布开源库到Jcenter和Maven Central">
+<meta name="twitter:description" content="前言：在开发中，经常会使用第三方库，一般是通过maven或gradle的方式引用。很方便，整个引用过程也就几行配置代码（gradle只用一行）。  
+下面就是记录将将自己的的库开源出去的整个流程：参照https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en">
   
     <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
   
@@ -94,10 +85,10 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-android-look" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-pulish-library-to-jcenter" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/01/04/android-look/" class="article-date">
-  <time datetime="2016-01-04T09:39:13.000Z" itemprop="datePublished">2016-01-04</time>
+    <a href="/2016/07/04/pulish-library-to-jcenter/" class="article-date">
+  <time datetime="2016-07-04T06:07:19.000Z" itemprop="datePublished">2016-07-04</time>
 </a>
     
   </div>
@@ -108,7 +99,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      android发布相关
+      发布开源库到Jcenter和Maven Central
     </h1>
   
 
@@ -116,43 +107,38 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1_u3001_u7B2C_u4E09_u65B9_u5E94_u7528_u53D1_u5E03_u5E73_u53F0_u7A7A_u5305_u7B7E_u540D_u65B9_u6CD5"><a href="#1_u3001_u7B2C_u4E09_u65B9_u5E94_u7528_u53D1_u5E03_u5E73_u53F0_u7A7A_u5305_u7B7E_u540D_u65B9_u6CD5" class="headerlink" title="1、第三方应用发布平台空包签名方法"></a>1、第三方应用发布平台空包签名方法</h4><hr>
+        <h4 id="u524D_u8A00_uFF1A"><a href="#u524D_u8A00_uFF1A" class="headerlink" title="前言："></a>前言：</h4><p>在开发中，经常会使用第三方库，一般是通过maven或gradle的方式引用。很方便，整个引用过程也就几行配置代码（gradle只用一行）。  </p>
+<h5 id="u4E0B_u9762_u5C31_u662F_u8BB0_u5F55_u5C06_u5C06_u81EA_u5DF1_u7684_u7684_u5E93_u5F00_u6E90_u51FA_u53BB_u7684_u6574_u4E2A_u6D41_u7A0B_uFF1A"><a href="#u4E0B_u9762_u5C31_u662F_u8BB0_u5F55_u5C06_u5C06_u81EA_u5DF1_u7684_u7684_u5E93_u5F00_u6E90_u51FA_u53BB_u7684_u6574_u4E2A_u6D41_u7A0B_uFF1A" class="headerlink" title="下面就是记录将将自己的的库开源出去的整个流程："></a>下面就是记录将将自己的的库开源出去的整个流程：</h5><p>参照<a href="https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en" target="_blank" rel="external">https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en</a>  <a href="http://www.devtf.cn/?p=760&amp;utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">【翻译在此】</a><br>这里已经很详细了，接下来是实际操作过程中应注意的地方：</p>
+<p>1、在Mac终端中，gradle的相关命令应 <code>./gradlew xxx</code>这样写,以下都默认在Mac中</p>
+<p>2、在运行<code>./gradew install</code>时,会报  </p>
 <blockquote>
-<p>jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名<br>注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。</p>
-<p>例如：<br>要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk</p>
-<p>密匙库文件为 d:\project\360Wallpaper.keystore<br>别名(Alias)为QIHU360</p>
-<p>那么签名的命令为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verbose -keystore d:\project\<span class="number">360</span>Wallpaper.keystore -signedjar d:\qihusign.apk d:\Qihuunsign.apk QIHU360</span><br></pre></td></tr></table></figure></p>
+<p>Caused by: java.lang.NoClassDefFoundError: org/gradle/api/publication/maven/internal/DefaultMavenFactory</p>
 </blockquote>
-<a id="more"></a>  
-<h4 id="2_u3001_u5C06Google_play_u4E0A_u7684_u5E94_u7528_u4E0B_u8F7D_u5230_u7535_u8111"><a href="#2_u3001_u5C06Google_play_u4E0A_u7684_u5E94_u7528_u4E0B_u8F7D_u5230_u7535_u8111" class="headerlink" title="2、将Google play上的应用下载到电脑"></a>2、将Google play上的应用下载到电脑</h4><hr>
+<p>当使用的Gradle版本是2.4以上，Android插件版本是1.3.0以上的时候就会出现这个问题，这时候我们需在project的 <code>build.gradle</code> 文件中的插件版本添加一行<br><code>classpath ‘com.github.dcendents:android-maven-gradle-plugin:1.3’</code></p>
+<p>3、在运行<code>./gradlew bintrayUpload</code>时，报  </p>
 <blockquote>
-<ul>
-<li>用账号登录<a href="https://play.google.com" target="_blank" rel="external">Google play</a></li>
-<li>找到想要下载的应用，复制该应用链接地址</li>
-<li>打开<a href="http://apps.evozi.com/apk-downloader/" target="_blank" rel="external">APK Downloader</a>将复制的地址粘贴到指定的输入框中，并按照提示进行操作</li>
-<li>附：备用下载网站<a href="http://apk-dl.com/" target="_blank" rel="external">apk-dl</a>、<a href="https://apkpure.com/" target="_blank" rel="external">apkpure</a>、<a href="http://apkleecher.com/" target="_blank" rel="external">apkleecher</a>、<a href="http://www.coolapk.com/" target="_blank" rel="external">酷安网</a>、<a href="http://globalapk.co/" target="_blank" rel="external">globalapk</a></li>
-</ul>
+<p>What went wrong:<br>Execution failed for task ‘:library:bintrayUpload’.<br>Could not create package ‘sujian27@163.com/maven/simplify’: HTTP/1.1 401 Unauthorized [message:This resource requires authentication]</p>
 </blockquote>
-<h4 id="3_u3001Eclipse_u5BFC_u51FAjavadoc_u4E71_u7801"><a href="#3_u3001Eclipse_u5BFC_u51FAjavadoc_u4E71_u7801" class="headerlink" title="3、Eclipse导出javadoc乱码"></a>3、Eclipse导出javadoc乱码</h4><hr>
+<p>这是<code>local.properites</code>中的<code>bintray.user</code>配置错误导致的。在注册bintray时，直接用github的账号注册的，这时候bintray.user应为主页显示的那个名称，而不是邮箱。</p>
+<p>4、在运行<code>./gradlew bintrayUpload</code>时，报 </p>
 <blockquote>
-<ul>
-<li>在Eclipse里 export 选 JavaDoc，在向导的最后一页的Extra JavaDoc Options 里填上参数即可。比如项目采用的是<code>UTF－8</code>的编码就填：<code>-encoding UTF-8 -charset UTF-8</code></li>
-</ul>
+<p>What went wrong:<br>Execution failed for task ‘:library:bintrayUpload’.<br>Could not upload to ‘<a href="https://api.bintray.com/content/timesfire/maven/simplify/0.1.0/com/github/timesfire/library/0.1.0/library-0.1.0.pom" target="_blank" rel="external">https://api.bintray.com/content/timesfire/maven/simplify/0.1.0/com/github/timesfire/library/0.1.0/library-0.1.0.pom</a>‘: HTTP/1.1 400 Bad Request [message:Unable to upload files: Maven group, artifact or version defined in the pom file do not match the file path ‘com/github/timesfire/library/0.1.0/library-0.1.0.pom’] </p>
 </blockquote>
+<p>这个时候我们的库已经上传到bintray上了，在对应的maven目录下也有对应的tag生成，但是不能正常引用，这是因为需要上传的库工程对应的module名称和我们配置的不一致，默认的库module名称是library，只需重命名为我们配置的名称即可，我这里是重命名为simplify。让后先将bintray上已经生成的TAG删除，重新运行上传命令即可。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="ciq7qjidx00138i31705x8ogh" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="ciq7qjid200088i31ge8nm6xo" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://dreamhigh.club/2016/01/04/android-look/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool/">Tool</a></li></ul>
 
     </footer>
   </div>
@@ -160,19 +146,10 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2016/01/20/migrate-maven-to-gradle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          将Maven工程迁移为Gradle工程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/01/01/new-year-declare/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/03/30/helpful-websites/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">新年物语</div>
+      <div class="article-nav-title">有用的网站整理</div>
     </a>
   
 </nav>
@@ -182,7 +159,7 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/01/04/android-look/" data-title="android发布相关" data-url="http://dreamhigh.club/2016/01/04/android-look/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/07/04/pulish-library-to-jcenter/" data-title="发布开源库到Jcenter和Maven Central" data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/"></div>
   </section>
 </section>
       

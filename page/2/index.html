@@ -83,6 +83,55 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-android-studio-issue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/30/android-studio-issue/" class="article-date">
+  <time datetime="2015-12-30T06:35:43.000Z" itemprop="datePublished">2015-12-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/30/android-studio-issue/">Android Stuido 使用过程中遇到的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated"><a href="#1_u3001_u65B0_u5EFAJava_library__u9879_u76EE_u7F16_u8BD1_u65F6_u51FA_u9519_uFF1AGradle_Error_3ACause_3A_peer_not_authenticated" class="headerlink" title="1、新建Java library 项目编译时出错：Gradle Error:Cause: peer not authenticated"></a>1、新建Java library 项目编译时出错：<code>Gradle Error:Cause: peer not authenticated</code></h3><blockquote>
+<p>将<code>build.gradle</code>文件里的：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">     jcenter()</span><br><span class="line">&#125;      </span><br><span class="line">```     </span><br><span class="line">替换为：</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">repositories &#123;</span><br><span class="line">     jcenter</span><br><span class="line">         &#123;</span><br><span class="line">           url <span class="string">'http://jcenter.bintray.com'</span></span><br><span class="line">         &#125;</span><br><span class="line">&#125;      </span><br><span class="line">```     </span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"><span class="comment">### 2、部分导入项目，在Terminal中输入./gradlew 命令会出现</span></span><br><span class="line">``` bash</span><br><span class="line">$ ./gradlew -v</span><br><span class="line">Downloading https://services.gradle.org/distributions/gradle-<span class="number">2.4</span>-all.zip</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>查看了一下，在系统的<code>GRADLE_USER_HOME/.gradle/wrapper/dists</code>目录下已经有了gradle-2.4-all.zip包，为何还要重新下载？<br>这是因为项目工程gradle/wrapper下gradle-wrapper.jar引起的，用一个比较新的替换即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2015/12/30/android-studio-issue/" data-id="ciq7qjidu000z8i31mevmf410" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://dreamhigh.club/2015/12/30/android-studio-issue/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AS/">AS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-android-new-skill" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/30/android-new-skill/" class="article-date">
@@ -137,7 +186,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/30/android-new-skill/" data-id="cink242ce000xls0csukkt8sy" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/30/android-new-skill/" data-id="ciq7qjidw00128i31elg4v2bu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -190,7 +239,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/23/git-simple-usage/" data-id="cink242c6000pls0cjf8lzxsa" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/23/git-simple-usage/" data-id="ciq7qjidp000u8i31om0877ud" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -241,7 +290,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/18/Python之环境工具篇/" data-id="cink242ch0010ls0cqb01iktd" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/18/Python之环境工具篇/" data-id="ciq7qjidy00158i31qp8gl76v" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -293,7 +342,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/17/hexo-issue/" data-id="cink242c1000lls0cdgz602pb" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/17/hexo-issue/" data-id="ciq7qjidl000q8i31q1iutojd" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -351,7 +400,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/16/mac-os-skill/" data-id="cink242bw000els0cn6wh5xdf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/16/mac-os-skill/" data-id="ciq7qjidd000j8i31fozw92lp" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -396,7 +445,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/15/python-start/" data-id="cink242bp0005ls0c4jpxue11" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/15/python-start/" data-id="ciq7qjid000058i31irhtfk7i" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -405,70 +454,6 @@ var _hmt = _hmt || [];
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点滴/">点滴</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Flask使用教程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/15/Flask使用教程/" class="article-date">
-  <time datetime="2015-12-15T05:06:36.000Z" itemprop="datePublished">2015-12-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/15/Flask使用教程/">Flask 使用教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、环境准备</p>
-<h3 id="1_u3001_u5B89_u88C5Python_Linux_u548CMac__u4E00_u822C_u81EA_u5E26Python2-6-*_u7248_u672C"><a href="#1_u3001_u5B89_u88C5Python_Linux_u548CMac__u4E00_u822C_u81EA_u5E26Python2-6-*_u7248_u672C" class="headerlink" title="1、安装Python  Linux和Mac 一般自带Python2.6.*版本"></a>1、安装Python  Linux和Mac 一般自带Python2.6.*版本</h3><h3 id="2_u3001_u5B89_u88C5easy_install_u548Cpip_u5DE5_u5177"><a href="#2_u3001_u5B89_u88C5easy_install_u548Cpip_u5DE5_u5177" class="headerlink" title="2、安装easy_install和pip工具"></a>2、安装easy_install和pip工具</h3><p>easy_insall的作用和perl中的cpan，ruby中的gem类似，都提供了在线一键安装模块的傻瓜方便方式，而pip是easy_install的改进版，提供更好的提示信息，删除package等功能。老版本的python中只有easy_install，没有pip</p>
-<blockquote>
-<p>easy_install下载与安装参照 </p>
-</blockquote>
-<p><a href="https://pypi.python.org/pypi/setuptools#using-setuptools-and-easyinstall">https://pypi.python.org/pypi/setuptools#using-setuptools-and-easyinstall</a></p>
-<blockquote>
-<p>查看easy_install 使用帮助 </p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">easy_install —<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>pip下载与安装参照 <code>https://pypi.python.org/pypi/pip</code></p>
-<blockquote>
-<p>下载：<code>wget 文件地址</code><br>解压：<code>tar -xvf xxx.tar.gz</code><br>安装：<code>python setup.py install</code></p>
-</blockquote>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/15/Flask使用教程/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2015/12/15/Flask使用教程/" data-id="cink242cj0013ls0cub5b4gcg" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2015/12/15/Flask使用教程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flask/">Flask</a></li></ul>
 
     </footer>
   </div>
@@ -492,7 +477,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -501,7 +486,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
+      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
     </div>
   </div>
 
@@ -510,7 +495,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -520,6 +505,10 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/07/04/pulish-library-to-jcenter/">发布开源库到Jcenter和Maven Central</a>
+          </li>
         
           <li>
             <a href="/2016/03/30/helpful-websites/">有用的网站整理</a>
@@ -535,10 +524,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2016/01/20/migrate-maven-to-gradle/">将Maven工程迁移为Gradle工程</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/04/android-look/">android发布相关</a>
           </li>
         
       </ul>

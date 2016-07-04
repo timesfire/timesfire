@@ -4,30 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android发布相关 | 梦萌的小case</title>
+  <title>Archives: 2016/7 | 梦萌的小case</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、第三方应用发布平台空包签名方法
-
-jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。
-例如：要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk
-密匙库文件为 d:\proje">
-<meta property="og:type" content="article">
-<meta property="og:title" content="android发布相关">
-<meta property="og:url" content="http://dreamhigh.club/2016/01/04/android-look/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梦萌的小case">
+<meta property="og:url" content="http://dreamhigh.club/archives/2016/07/index.html">
 <meta property="og:site_name" content="梦萌的小case">
-<meta property="og:description" content="1、第三方应用发布平台空包签名方法
-
-jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。
-例如：要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk
-密匙库文件为 d:\proje">
-<meta property="og:updated_time" content="2016-01-04T09:39:13.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android发布相关">
-<meta name="twitter:description" content="1、第三方应用发布平台空包签名方法
-
-jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。
-例如：要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk
-密匙库文件为 d:\proje">
+<meta name="twitter:title" content="梦萌的小case">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
   
@@ -94,96 +81,39 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-android-look" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/04/android-look/" class="article-date">
-  <time datetime="2016-01-04T09:39:13.000Z" itemprop="datePublished">2016-01-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      android发布相关
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/07/04/pulish-library-to-jcenter/" class="archive-article-date">
+  <time datetime="2016-07-04T06:07:19.000Z" itemprop="datePublished">7月 4</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/07/04/pulish-library-to-jcenter/">发布开源库到Jcenter和Maven Central</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1_u3001_u7B2C_u4E09_u65B9_u5E94_u7528_u53D1_u5E03_u5E73_u53F0_u7A7A_u5305_u7B7E_u540D_u65B9_u6CD5"><a href="#1_u3001_u7B2C_u4E09_u65B9_u5E94_u7528_u53D1_u5E03_u5E73_u53F0_u7A7A_u5305_u7B7E_u540D_u65B9_u6CD5" class="headerlink" title="1、第三方应用发布平台空包签名方法"></a>1、第三方应用发布平台空包签名方法</h4><hr>
-<blockquote>
-<p>jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名<br>注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。</p>
-<p>例如：<br>要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk</p>
-<p>密匙库文件为 d:\project\360Wallpaper.keystore<br>别名(Alias)为QIHU360</p>
-<p>那么签名的命令为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verbose -keystore d:\project\<span class="number">360</span>Wallpaper.keystore -signedjar d:\qihusign.apk d:\Qihuunsign.apk QIHU360</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<a id="more"></a>  
-<h4 id="2_u3001_u5C06Google_play_u4E0A_u7684_u5E94_u7528_u4E0B_u8F7D_u5230_u7535_u8111"><a href="#2_u3001_u5C06Google_play_u4E0A_u7684_u5E94_u7528_u4E0B_u8F7D_u5230_u7535_u8111" class="headerlink" title="2、将Google play上的应用下载到电脑"></a>2、将Google play上的应用下载到电脑</h4><hr>
-<blockquote>
-<ul>
-<li>用账号登录<a href="https://play.google.com" target="_blank" rel="external">Google play</a></li>
-<li>找到想要下载的应用，复制该应用链接地址</li>
-<li>打开<a href="http://apps.evozi.com/apk-downloader/" target="_blank" rel="external">APK Downloader</a>将复制的地址粘贴到指定的输入框中，并按照提示进行操作</li>
-<li>附：备用下载网站<a href="http://apk-dl.com/" target="_blank" rel="external">apk-dl</a>、<a href="https://apkpure.com/" target="_blank" rel="external">apkpure</a>、<a href="http://apkleecher.com/" target="_blank" rel="external">apkleecher</a>、<a href="http://www.coolapk.com/" target="_blank" rel="external">酷安网</a>、<a href="http://globalapk.co/" target="_blank" rel="external">globalapk</a></li>
-</ul>
-</blockquote>
-<h4 id="3_u3001Eclipse_u5BFC_u51FAjavadoc_u4E71_u7801"><a href="#3_u3001Eclipse_u5BFC_u51FAjavadoc_u4E71_u7801" class="headerlink" title="3、Eclipse导出javadoc乱码"></a>3、Eclipse导出javadoc乱码</h4><hr>
-<blockquote>
-<ul>
-<li>在Eclipse里 export 选 JavaDoc，在向导的最后一页的Extra JavaDoc Options 里填上参数即可。比如项目采用的是<code>UTF－8</code>的编码就填：<code>-encoding UTF-8 -charset UTF-8</code></li>
-</ul>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="ciq7qjidx00138i31705x8ogh" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2016/01/04/android-look/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/01/20/migrate-maven-to-gradle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          将Maven工程迁移为Gradle工程
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/01/01/new-year-declare/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">新年物语</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/01/04/android-look/" data-title="android发布相关" data-url="http://dreamhigh.club/2016/01/04/android-look/"></div>
-  </section>
+  
+  
+    </div></section>
+  
 </section>
       
       <aside id="sidebar">
