@@ -4,21 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Flask 使用教程 | 梦萌的小case</title>
+  <title>Archives: 2016/8 | 梦萌的小case</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、环境准备
-1、安装Python  Linux和Mac 一般自带Python2.6.*版本2、安装easy_install和pip工具easy_insall的作用和perl中的cpan，ruby中的gem类似，都提供了在线一键安装模块的傻瓜方便方式，而pip是easy_install的改进版，提供更好的提示信息，删除package等功能。老版本的python中只有easy_install，没有p">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Flask 使用教程">
-<meta property="og:url" content="http://dreamhigh.club/2015/12/15/Flask使用教程/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梦萌的小case">
+<meta property="og:url" content="http://dreamhigh.club/archives/2016/08/index.html">
 <meta property="og:site_name" content="梦萌的小case">
-<meta property="og:description" content="一、环境准备
-1、安装Python  Linux和Mac 一般自带Python2.6.*版本2、安装easy_install和pip工具easy_insall的作用和perl中的cpan，ruby中的gem类似，都提供了在线一键安装模块的傻瓜方便方式，而pip是easy_install的改进版，提供更好的提示信息，删除package等功能。老版本的python中只有easy_install，没有p">
-<meta property="og:updated_time" content="2015-12-18T08:26:25.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flask 使用教程">
-<meta name="twitter:description" content="一、环境准备
-1、安装Python  Linux和Mac 一般自带Python2.6.*版本2、安装easy_install和pip工具easy_insall的作用和perl中的cpan，ruby中的gem类似，都提供了在线一键安装模块的傻瓜方便方式，而pip是easy_install的改进版，提供更好的提示信息，删除package等功能。老版本的python中只有easy_install，没有p">
+<meta name="twitter:title" content="梦萌的小case">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
   
@@ -85,99 +81,58 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-Flask使用教程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/15/Flask使用教程/" class="article-date">
-  <time datetime="2015-12-15T05:06:36.000Z" itemprop="datePublished">2015-12-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Flask 使用教程
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/08/26/android-touchevent/" class="archive-article-date">
+  <time datetime="2016-08-26T01:16:18.000Z" itemprop="datePublished">8月 26</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/08/26/android-touchevent/">android事件分发机制</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、环境准备</p>
-<h3 id="1_u3001_u5B89_u88C5Python_Linux_u548CMac__u4E00_u822C_u81EA_u5E26Python2-6-*_u7248_u672C"><a href="#1_u3001_u5B89_u88C5Python_Linux_u548CMac__u4E00_u822C_u81EA_u5E26Python2-6-*_u7248_u672C" class="headerlink" title="1、安装Python  Linux和Mac 一般自带Python2.6.*版本"></a>1、安装Python  Linux和Mac 一般自带Python2.6.*版本</h3><h3 id="2_u3001_u5B89_u88C5easy_install_u548Cpip_u5DE5_u5177"><a href="#2_u3001_u5B89_u88C5easy_install_u548Cpip_u5DE5_u5177" class="headerlink" title="2、安装easy_install和pip工具"></a>2、安装easy_install和pip工具</h3><p>easy_insall的作用和perl中的cpan，ruby中的gem类似，都提供了在线一键安装模块的傻瓜方便方式，而pip是easy_install的改进版，提供更好的提示信息，删除package等功能。老版本的python中只有easy_install，没有pip</p>
-<blockquote>
-<p>easy_install下载与安装参照 </p>
-</blockquote>
-<p><a href="https://pypi.python.org/pypi/setuptools#using-setuptools-and-easyinstall" target="_blank" rel="external">https://pypi.python.org/pypi/setuptools#using-setuptools-and-easyinstall</a></p>
-<blockquote>
-<p>查看easy_install 使用帮助 </p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">easy_install —<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>pip下载与安装参照 <code>https://pypi.python.org/pypi/pip</code></p>
-<blockquote>
-<p>下载：<code>wget 文件地址</code><br>解压：<code>tar -xvf xxx.tar.gz</code><br>安装：<code>python setup.py install</code></p>
-</blockquote>
-</blockquote>
-<a id="more"></a>
-<h3 id="3_u3001_u5B89_u88C5virtualenv"><a href="#3_u3001_u5B89_u88C5virtualenv" class="headerlink" title="3、安装virtualenv"></a>3、安装virtualenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip install virtualenv</span><br></pre></td></tr></table></figure>
-<p>使用  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myproject </span><br><span class="line">$ <span class="built_in">cd</span> myproject   </span><br><span class="line">$ virtualenv venn  </span><br><span class="line">New python executable <span class="keyword">in</span> venv/bin/python</span><br><span class="line">Installing distribute............done.</span><br></pre></td></tr></table></figure>
-<p>现在，只要你想要在某个项目上工作，只要激活相应的环境。在 OS X 和 Linux 下，按如下做:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ . venv/bin/activate</span><br></pre></td></tr></table></figure>
-<p>如果你是个 Windows 用户，下面的命令行是为你准备的:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="formula">$ venv<span class="command">\scripts</span><span class="command">\activate</span></span></span><br></pre></td></tr></table></figure>
-<p>二、升级Python2.6.<em> 到Python2.7.</em><br>      升级后easy_install 和pip 需要重新安装</p>
-<p>三、uWSGI 与Nginx配置 参照<br><a href="http://www.nowamagic.net/academy/detail/1330331" target="_blank" rel="external">http://www.nowamagic.net/academy/detail/1330331</a><br><a href="http://www.phpgao.com/nginx_uwsgi_flask.html" target="_blank" rel="external">http://www.phpgao.com/nginx_uwsgi_flask.html</a><br><a href="http://www.oschina.net/translate/serving-flask-with-nginx-on-ubuntu" target="_blank" rel="external">http://www.oschina.net/translate/serving-flask-with-nginx-on-ubuntu</a><br><a href="http://www.nginx.cn/591.html" target="_blank" rel="external">http://www.nginx.cn/591.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2015/12/15/Flask使用教程/" data-id="cisfhorbz001g6i315cpjufmh" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2015/12/15/Flask使用教程/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flask/">Flask</a></li></ul>
-
-    </footer>
+    </header>
   </div>
+</article>
   
     
-<nav id="article-nav">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/08/04/android-decompile/" class="archive-article-date">
+  <time datetime="2016-08-04T06:22:27.000Z" itemprop="datePublished">8月 4</time>
+</a>
+      
   
-    <a href="/2015/12/15/python-start/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Python学习起始
-        
-      </div>
-    </a>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/08/04/android-decompile/">android逆向工程</a>
+    </h1>
   
-  
-    <a href="/2015/12/12/android-studio-unit-test/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Android Studio 单元测试</div>
-    </a>
-  
-</nav>
 
-  
+    </header>
+  </div>
 </article>
-
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/12/15/Flask使用教程/" data-title="Flask 使用教程" data-url="http://dreamhigh.club/2015/12/15/Flask使用教程/"></div>
-  </section>
+  
+  
+    </div></section>
+  
 </section>
       
       <aside id="sidebar">

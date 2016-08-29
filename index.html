@@ -83,6 +83,111 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-android-touchevent" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/26/android-touchevent/" class="article-date">
+  <time datetime="2016-08-26T01:16:18.000Z" itemprop="datePublished">2016-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/26/android-touchevent/">android事件分发机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="u4E00_u3001android_u4E8B_u4EF6_u5206_u53D1_u9996_u5148_u4ECE_MotionEvent-ACTION_DOWN__u4E8B_u4EF6_u5F00_u59CB_uFF0CACTION_DOWN__u4E8B_u4EF6_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_u56FE_uFF1A"><a href="#u4E00_u3001android_u4E8B_u4EF6_u5206_u53D1_u9996_u5148_u4ECE_MotionEvent-ACTION_DOWN__u4E8B_u4EF6_u5F00_u59CB_uFF0CACTION_DOWN__u4E8B_u4EF6_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_u56FE_uFF1A" class="headerlink" title="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图："></a>一、android事件分发首先从 <code>MotionEvent.ACTION_DOWN</code> 事件开始，<code>ACTION_DOWN</code> 事件的分发流程如下图：</h5><p><img src="/images/QQ20160826-0@2x.png" alt="图1"></p>
+<h5 id="u4E8C_u3001MotionEvent-ACTION_UP_u4E8B_u4EF6_u5206_u53D1_u4F1A_u53D7_u5230ACTION_DOWN_u4E8B_u4EF6_u5206_u53D1_u7ED3_u679C_u7684_u5F71_u54CD_u3002_u6211_u4EEC_u628AACTION_DOWN_u4E8B_u4EF6_u4E2D_u6B62_u5411_u4E0B_u5206_u53D1_u5904_u5F53_u4F5C_u4E00_u4E2A_u8282_u70B9_uFF0C_u5982_u4E0A_u56FE_uFF0C_u53EF_u80FD_u7684_u8282_u70B9_u67096_u4E2A_u3002android_u4E8B_u4EF6_u5206_u53D1_u5177_u6709_u6D88_u8D39_u673A_u5236_uFF0C_u5728_u8FD96_u4E2A_u8282_u70B9_u4E2D_u6309_u7167_u6D88_u8D39_u5BF9_u8C61_u6765_u5206_u53C8_u53EF_u4EE5_u5206_u4E3A_u4E09_u7C7B_uFF1A"><a href="#u4E8C_u3001MotionEvent-ACTION_UP_u4E8B_u4EF6_u5206_u53D1_u4F1A_u53D7_u5230ACTION_DOWN_u4E8B_u4EF6_u5206_u53D1_u7ED3_u679C_u7684_u5F71_u54CD_u3002_u6211_u4EEC_u628AACTION_DOWN_u4E8B_u4EF6_u4E2D_u6B62_u5411_u4E0B_u5206_u53D1_u5904_u5F53_u4F5C_u4E00_u4E2A_u8282_u70B9_uFF0C_u5982_u4E0A_u56FE_uFF0C_u53EF_u80FD_u7684_u8282_u70B9_u67096_u4E2A_u3002android_u4E8B_u4EF6_u5206_u53D1_u5177_u6709_u6D88_u8D39_u673A_u5236_uFF0C_u5728_u8FD96_u4E2A_u8282_u70B9_u4E2D_u6309_u7167_u6D88_u8D39_u5BF9_u8C61_u6765_u5206_u53C8_u53EF_u4EE5_u5206_u4E3A_u4E09_u7C7B_uFF1A" class="headerlink" title="二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以分为三类："></a>二、<code>MotionEvent.ACTION_UP</code>事件分发会受到<code>ACTION_DOWN</code>事件分发结果的影响。我们把<code>ACTION_DOWN</code>事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以分为三类：</h5><ul>
+<li><u><font color="#ff7f50" size="4">1</font></u>、<u><font color="#ff7f50" size="4">6</font></u>对应消费者为Activity，</li>
+<li><u><font color="#ff7f50" size="4">2</font></u>、<u><font color="#ff7f50" size="4">5</font></u>对应消费者为ViewGroup，</li>
+<li><u><font color="#ff7f50" size="4">3</font></u>、<u><font color="#ff7f50" size="4">4</font></u>对应消费者为View。</li>
+</ul>
+<p>通常情况下，如果一个对象消费了<code>ACTION_DOWN</code>事件，android系统会认为这个对象可能也会消费<code>ACTION_UP</code>事件。相对的如果一个对象没有消费<code>ACTION_DOWN</code>事件，那么android系统会认为这个对象也不会消费<code>ACTION_UP</code>事件，在<code>ACTION_UP</code>事件传递过程中就会跳过这个对象。<br>以下根据这3类情况来探讨<code>ACTION_UP</code>事件的分发流程。</p>
+<h6 id="1_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABActivity_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#1_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABActivity_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="1、ACTION_DOWN事件被Activity消费时，ACTION_UP的分发流程如下："></a>1、<code>ACTION_DOWN</code>事件被Activity消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-activity@2x.png" width="400" alt="图2" align="center"></p>
+<h6 id="2_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABViewGroup_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#2_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABViewGroup_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="2、ACTION_DOWN事件被ViewGroup消费时，ACTION_UP的分发流程如下："></a>2、<code>ACTION_DOWN</code>事件被ViewGroup消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-viewgroup@2x.png" width="700" alt="图3" align="center"></p>
+<h6 id="3_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABView_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#3_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABView_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="3、ACTION_DOWN事件被View消费时，ACTION_UP的分发流程如下："></a>3、<code>ACTION_DOWN</code>事件被View消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-view@2x.png" alt="图4"></p>
+<p>测试工程稍后会放到<a href="https://github.com/timesfire" target="_blank" rel="external">Github</a>上，欢迎follow</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/08/26/android-touchevent/" data-id="cisfhorbl000x6i31u0iv7znq" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://dreamhigh.club/2016/08/26/android-touchevent/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/View/">View</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android-decompile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/04/android-decompile/" class="article-date">
+  <time datetime="2016-08-04T06:22:27.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/android-decompile/">android逆向工程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="u76EE_u6807"><a href="#u76EE_u6807" class="headerlink" title="目标"></a>目标</h5><ul>
+<li>分析apk的文件结构，获取apk相关资源</li>
+<li>对apk进行调式</li>
+<li>修改重新编译apk</li>
+</ul>
+<h5 id="u5DE5_u5177"><a href="#u5DE5_u5177" class="headerlink" title="工具"></a>工具</h5><p>1、Android Studio自带的Apk Analyze可以<br>2、在Android studio上安装smalidea插件<br>3、安装Apktool，可以通过brew来安装</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/08/04/android-decompile/" data-id="cisfhorbv00196i31ode5412o" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://dreamhigh.club/2016/08/04/android-decompile/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pulish-library-to-jcenter" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/07/04/pulish-library-to-jcenter/" class="article-date">
@@ -128,7 +233,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="ciq7qjid200088i31ge8nm6xo" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="cisfhorb100086i31nhngkf7p" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -180,7 +285,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="ciq7qjidn000t8i31yseznj5h" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="cisfhorbh000t6i31vts4ydee" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -228,7 +333,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="ciq7qjidh000m8i31807zs5e1" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="cisfhorbb000m6i310xvc4d0q" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -278,7 +383,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="ciq7qjics00008i31ywaegra9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cisfhoraq00006i31n7z386dh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -325,117 +430,19 @@ var _hmt = _hmt || [];
 <h4 id="u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A"><a href="#u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A" class="headerlink" title="三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法："></a>三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法：</h4><blockquote>
 <p>1、 新建一个module,选择java library。此时pom项目都会出现在Android模式下，现在再把<br>刚才新建的module删除即可<br>2、不新建module,将项目关闭重新打开，此时会会有是否应用gradle wrapper 的提示，选择应<br>用建议，OK！</p>
 </blockquote>
+<p>补充：<br>有些项目，执行<code>/Users/shujian/android/gradle/bin/gradle build</code>失败，解决方法：关闭项目，重新打开。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/20/migrate-maven-to-gradle/" data-id="ciq7qjid7000f8i31avme8nh2" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/20/migrate-maven-to-gradle/" data-id="cisfhorb5000f6i31e7jjfigj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android-look" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/04/android-look/" class="article-date">
-  <time datetime="2016-01-04T09:39:13.000Z" itemprop="datePublished">2016-01-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/04/android-look/">android发布相关</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1_u3001_u7B2C_u4E09_u65B9_u5E94_u7528_u53D1_u5E03_u5E73_u53F0_u7A7A_u5305_u7B7E_u540D_u65B9_u6CD5"><a href="#1_u3001_u7B2C_u4E09_u65B9_u5E94_u7528_u53D1_u5E03_u5E73_u53F0_u7A7A_u5305_u7B7E_u540D_u65B9_u6CD5" class="headerlink" title="1、第三方应用发布平台空包签名方法"></a>1、第三方应用发布平台空包签名方法</h4><hr>
-<blockquote>
-<p>jarsigner -verbose -keystore 密钥库位置 -signedjar 签名后的apk 签名前的apk 别名<br>注意：给Qihuunsign.apk签名密匙库文件及别名必须要验证的apk一致。否则会导致验证不能通过。</p>
-<p>例如：<br>要对Qihuunsign.apk 文件签名 希望签名后的文件名为 Qihusign.apk</p>
-<p>密匙库文件为 d:\project\360Wallpaper.keystore<br>别名(Alias)为QIHU360</p>
-<p>那么签名的命令为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verbose -keystore d:\project\<span class="number">360</span>Wallpaper.keystore -signedjar d:\qihusign.apk d:\Qihuunsign.apk QIHU360</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2016/01/04/android-look/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="ciq7qjidx00138i31705x8ogh" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2016/01/04/android-look/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-new-year-declare" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/01/new-year-declare/" class="article-date">
-  <time datetime="2016-01-01T04:46:54.000Z" itemprop="datePublished">2016-01-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/01/new-year-declare/">新年物语</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>新的一年，回顾与总结</p>
-<p>回归、思考、再启程</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/01/01/new-year-declare/" data-id="ciq7qjid5000d8i317f437ptu" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点滴/">点滴</a></li></ul>
 
     </footer>
   </div>
@@ -459,7 +466,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -468,7 +475,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
+      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
     </div>
   </div>
 
@@ -477,7 +484,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -489,6 +496,14 @@ var _hmt = _hmt || [];
       <ul>
         
           <li>
+            <a href="/2016/08/26/android-touchevent/">android事件分发机制</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/04/android-decompile/">android逆向工程</a>
+          </li>
+        
+          <li>
             <a href="/2016/07/04/pulish-library-to-jcenter/">发布开源库到Jcenter和Maven Central</a>
           </li>
         
@@ -498,14 +513,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2016/03/29/mac-command-line-tool-use/">Mac常见命令行工具的使用</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/02/rxandroid-detail/">响应式编程框架RxAndroid使用简介</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/20/migrate-maven-to-gradle/">将Maven工程迁移为Gradle工程</a>
           </li>
         
       </ul>
