@@ -4,25 +4,93 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android事件分发机制 | 梦萌的小case</title>
+  <title>android Backstack和Task测试 | 梦萌的小case</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图：
-二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以">
+  <meta name="description" content="Activity
+
+
+Activity
+launchMode
+taskAffinity
+allowTaskReparenting
+
+
+
+
+A
+standard
+com.timesfire.backstacktest
+false 
+
+
+A1
+standard
+com.timesfire.backstacktest
+false 
+
+
+A2
+standard
+com.timesfire.backstac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android事件分发机制">
-<meta property="og:url" content="http://dreamhigh.club/2016/08/26/android-touchevent/index.html">
+<meta property="og:title" content="android Backstack和Task测试">
+<meta property="og:url" content="http://dreamhigh.club/2016/08/30/android-backstack-flag/index.html">
 <meta property="og:site_name" content="梦萌的小case">
-<meta property="og:description" content="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图：
-二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以">
-<meta property="og:image" content="http://dreamhigh.club/images/QQ20160826-0@2x.png">
-<meta property="og:image" content="http://dreamhigh.club//images/QQ20160829-activity@2x.png">
-<meta property="og:image" content="http://dreamhigh.club//images/QQ20160829-viewgroup@2x.png">
-<meta property="og:image" content="http://dreamhigh.club/images/QQ20160829-view@2x.png">
-<meta property="og:updated_time" content="2016-08-29T02:56:31.000Z">
+<meta property="og:description" content="Activity
+
+
+Activity
+launchMode
+taskAffinity
+allowTaskReparenting
+
+
+
+
+A
+standard
+com.timesfire.backstacktest
+false 
+
+
+A1
+standard
+com.timesfire.backstacktest
+false 
+
+
+A2
+standard
+com.timesfire.backstac">
+<meta property="og:updated_time" content="2016-08-30T08:23:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android事件分发机制">
-<meta name="twitter:description" content="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图：
-二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以">
+<meta name="twitter:title" content="android Backstack和Task测试">
+<meta name="twitter:description" content="Activity
+
+
+Activity
+launchMode
+taskAffinity
+allowTaskReparenting
+
+
+
+
+A
+standard
+com.timesfire.backstacktest
+false 
+
+
+A1
+standard
+com.timesfire.backstacktest
+false 
+
+
+A2
+standard
+com.timesfire.backstac">
   
     <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
   
@@ -89,10 +157,10 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-android-touchevent" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-android-backstack-flag" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/08/26/android-touchevent/" class="article-date">
-  <time datetime="2016-08-26T01:16:18.000Z" itemprop="datePublished">2016-08-26</time>
+    <a href="/2016/08/30/android-backstack-flag/" class="article-date">
+  <time datetime="2016-08-30T08:23:59.000Z" itemprop="datePublished">2016-08-30</time>
 </a>
     
   </div>
@@ -103,7 +171,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      android事件分发机制
+      android Backstack和Task测试
     </h1>
   
 
@@ -111,31 +179,156 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="u4E00_u3001android_u4E8B_u4EF6_u5206_u53D1_u9996_u5148_u4ECE_MotionEvent-ACTION_DOWN__u4E8B_u4EF6_u5F00_u59CB_uFF0CACTION_DOWN__u4E8B_u4EF6_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_u56FE_uFF1A"><a href="#u4E00_u3001android_u4E8B_u4EF6_u5206_u53D1_u9996_u5148_u4ECE_MotionEvent-ACTION_DOWN__u4E8B_u4EF6_u5F00_u59CB_uFF0CACTION_DOWN__u4E8B_u4EF6_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_u56FE_uFF1A" class="headerlink" title="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图："></a>一、android事件分发首先从 <code>MotionEvent.ACTION_DOWN</code> 事件开始，<code>ACTION_DOWN</code> 事件的分发流程如下图：</h5><p><img src="/images/QQ20160826-0@2x.png" alt="图1"></p>
-<h5 id="u4E8C_u3001MotionEvent-ACTION_UP_u4E8B_u4EF6_u5206_u53D1_u4F1A_u53D7_u5230ACTION_DOWN_u4E8B_u4EF6_u5206_u53D1_u7ED3_u679C_u7684_u5F71_u54CD_u3002_u6211_u4EEC_u628AACTION_DOWN_u4E8B_u4EF6_u4E2D_u6B62_u5411_u4E0B_u5206_u53D1_u5904_u5F53_u4F5C_u4E00_u4E2A_u8282_u70B9_uFF0C_u5982_u4E0A_u56FE_uFF0C_u53EF_u80FD_u7684_u8282_u70B9_u67096_u4E2A_u3002android_u4E8B_u4EF6_u5206_u53D1_u5177_u6709_u6D88_u8D39_u673A_u5236_uFF0C_u5728_u8FD96_u4E2A_u8282_u70B9_u4E2D_u6309_u7167_u6D88_u8D39_u5BF9_u8C61_u6765_u5206_u53C8_u53EF_u4EE5_u5206_u4E3A_u4E09_u7C7B_uFF1A"><a href="#u4E8C_u3001MotionEvent-ACTION_UP_u4E8B_u4EF6_u5206_u53D1_u4F1A_u53D7_u5230ACTION_DOWN_u4E8B_u4EF6_u5206_u53D1_u7ED3_u679C_u7684_u5F71_u54CD_u3002_u6211_u4EEC_u628AACTION_DOWN_u4E8B_u4EF6_u4E2D_u6B62_u5411_u4E0B_u5206_u53D1_u5904_u5F53_u4F5C_u4E00_u4E2A_u8282_u70B9_uFF0C_u5982_u4E0A_u56FE_uFF0C_u53EF_u80FD_u7684_u8282_u70B9_u67096_u4E2A_u3002android_u4E8B_u4EF6_u5206_u53D1_u5177_u6709_u6D88_u8D39_u673A_u5236_uFF0C_u5728_u8FD96_u4E2A_u8282_u70B9_u4E2D_u6309_u7167_u6D88_u8D39_u5BF9_u8C61_u6765_u5206_u53C8_u53EF_u4EE5_u5206_u4E3A_u4E09_u7C7B_uFF1A" class="headerlink" title="二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以分为三类："></a>二、<code>MotionEvent.ACTION_UP</code>事件分发会受到<code>ACTION_DOWN</code>事件分发结果的影响。我们把<code>ACTION_DOWN</code>事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以分为三类：</h5><ul>
-<li><u><font color="#ff7f50" size="4">1</font></u>、<u><font color="#ff7f50" size="4">6</font></u>对应消费者为Activity，</li>
-<li><u><font color="#ff7f50" size="4">2</font></u>、<u><font color="#ff7f50" size="4">5</font></u>对应消费者为ViewGroup，</li>
-<li><u><font color="#ff7f50" size="4">3</font></u>、<u><font color="#ff7f50" size="4">4</font></u>对应消费者为View。</li>
+        <h5 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h5><table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>launchMode</th>
+<th>taskAffinity</th>
+<th>allowTaskReparenting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>standard</td>
+<td>com.timesfire.backstacktest</td>
+<td>false </td>
+</tr>
+<tr>
+<td>A<sub>1</sub></td>
+<td>standard</td>
+<td>com.timesfire.backstacktest</td>
+<td>false </td>
+</tr>
+<tr>
+<td>A<sub>2</sub></td>
+<td>standard</td>
+<td>com.timesfire.backstacktest</td>
+<td>false </td>
+</tr>
+<tr>
+<td>B</td>
+<td>singleTop</td>
+<td>com.timesfire.backstacktest</td>
+<td>false</td>
+</tr>
+<tr>
+<td>C</td>
+<td>singleTask</td>
+<td>com.timesfire.backstacktest</td>
+<td>false</td>
+</tr>
+<tr>
+<td>D</td>
+<td>singleInstance</td>
+<td>com.timesfire.backstacktest</td>
+<td>false</td>
+</tr>
+<tr>
+<td>E</td>
+<td>standard</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+<tr>
+<td>F</td>
+<td>singleTop</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+<tr>
+<td>G</td>
+<td>singleTask</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+<tr>
+<td>H</td>
+<td>singleInstance</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h5 id="u6D4B_u8BD5_u6570_u636E"><a href="#u6D4B_u8BD5_u6570_u636E" class="headerlink" title="测试数据"></a>测试数据</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">初始Activity栈</th>
+<th>启动目标Activity</th>
+<th>addFlags</th>
+<th>结果 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td>A<sub>1</sub> 、 A<sub>2</sub> 、B、C、E、F</td>
+<td>无</td>
+<td>A与目标Activity在同一个Task中 </td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>D、G、H</td>
+<td>无</td>
+<td>会启动新的Task，A与目标Activity在不同Task中</td>
+</tr>
+<tr>
+<td style="text-align:center">A-&gt;C-&gt;A<sub>1</sub>-&gt;A<sub>2</sub></td>
+<td>C</td>
+<td>无</td>
+<td>不会开启新的Activity C，首先A<sub>1</sub>会销毁，接着C中调用onNewIntent()方法,最后A<sub>2</sub>销毁</td>
+</tr>
+<tr>
+<td style="text-align:center">A-&gt;G</td>
+<td>C</td>
+<td>无</td>
+<td>新启动一个C放在和A同一个Task中，G在另一个Task中 </td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>E</td>
+<td><code>FLAG_ACTIVITY_NEW_TASK</code></td>
+<td>E 在一个新的Task中启动，与A所在的Task不同</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>A<sub>1</sub></td>
+<td><code>FLAG_ACTIVITY_NEW_TASK</code>、 <code>FLAG_ACTIVITY_MULTIPLE_TASK</code></td>
+<td>A<sub>1</sub> 在一个新的Task中启动，与A所在的Task不同。这个始终会开启一个新的Task</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>C</td>
+<td><code>FLAG_ACTIVITY_NEW_TASK</code><br> 或<br> <code>FLAG_ACTIVITY_NEW_TASK</code>、<br><code>FLAG_ACTIVITY_MULTIPLE_TASK</code><br>或 <br><code>FLAG_ACTIVITY_MULTIPLE_TASK</code></td>
+<td>A、C在同一个Task中，Flags标签对singleTask不起作用</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>FLAG_ACTIVITY_CLEAR_TOP</code><br>如果正在启动的 Activity 已在当前任务中运行，则会销毁当前任务顶部的所有 Activity，并通过 onNewIntent() 将此 Intent 传递给 Activity 已恢复的实例（现在位于顶部），而不是启动该 Activity 的新实例。<br>产生这种行为的 launchMode 属性没有值。<br>默认情况 launchMode 的值为  “standard” ，所以这种情况下，当目标Activity已经存在的时，使用这个标记不会调用目标Activity的 onNewIntent()方法，会将目标Activity销毁重建。<br>如果将FLAG_ACTIVITY_CLEAR_TOP和FLAG_ACTIVITY_SINGLE_TOP组合使用则会掉用目标Activity的onNewIntent()事件，这种情况下类似于使用launchMode＝“singleTask”</li>
 </ul>
-<p>通常情况下，如果一个对象消费了<code>ACTION_DOWN</code>事件，android系统会认为这个对象可能也会消费<code>ACTION_UP</code>事件。相对的如果一个对象没有消费<code>ACTION_DOWN</code>事件，那么android系统会认为这个对象也不会消费<code>ACTION_UP</code>事件，在<code>ACTION_UP</code>事件传递过程中就会跳过这个对象。<br>以下根据这3类情况来探讨<code>ACTION_UP</code>事件的分发流程。</p>
-<h6 id="1_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABActivity_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#1_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABActivity_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="1、ACTION_DOWN事件被Activity消费时，ACTION_UP的分发流程如下："></a>1、<code>ACTION_DOWN</code>事件被Activity消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-activity@2x.png" width="400" alt="图2" align="center"></p>
-<h6 id="2_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABViewGroup_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#2_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABViewGroup_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="2、ACTION_DOWN事件被ViewGroup消费时，ACTION_UP的分发流程如下："></a>2、<code>ACTION_DOWN</code>事件被ViewGroup消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-viewgroup@2x.png" width="700" alt="图3" align="center"></p>
-<h6 id="3_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABView_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#3_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABView_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="3、ACTION_DOWN事件被View消费时，ACTION_UP的分发流程如下："></a>3、<code>ACTION_DOWN</code>事件被View消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-view@2x.png" alt="图4"></p>
-<p>测试工程稍后会放到<a href="https://github.com/timesfire" target="_blank" rel="external">Github</a>上，欢迎follow</p>
+<ul>
+<li><p>“singleTask”<br>并不会始终创建新的Task，如果taskAffinity与启动它的activity不同才会重新创建。<code>FLAG_ACTIVITY_NEW_TASK</code>也需要配置taskAffinity才会生效。<br>使用singleTask去开启一个刚启动过的Activity，会掉用onNewIntent()方法，而使用<code>FLAG_ACTIVITY_NEW_TASK</code>去启动一个刚用<code>FLAG_ACTIVITY_NEW_TASK</code>启动过的Activity不会用任何操作，如果Activity位于其它的Task中会切换Task，除此之外不会有其它操作了，着重点在Task上。</p>
+</li>
+<li><p><code>FLAG_ACTIVITY_FORWARD_RESULT</code><br>这个标示可以用在多个activity交互过程中，比如<code>A</code> startActivityForResult <code>B</code>，这个时候如果 <code>B</code> startActivity <code>C</code> ，并且传人这个标示，则在<code>C</code>中setResult，<code>A</code>会收到结果，同时不管<code>C</code>中是否调用setResult方法，<code>B</code>中的setResult都会失效</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/08/26/android-touchevent/" data-id="cispkv6s8000xvh31px17a2jl" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/08/30/android-backstack-flag/" data-id="cispkv6sj001dvh31sb0licw8" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://dreamhigh.club/2016/08/26/android-touchevent/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://dreamhigh.club/2016/08/30/android-backstack-flag/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/View/">View</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Foundation/">Foundation</a></li></ul>
 
     </footer>
   </div>
@@ -143,19 +336,10 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2016/08/30/android-backstack-flag/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          android Backstack和Task测试
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/04/android-decompile/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/26/android-touchevent/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">android逆向工程</div>
+      <div class="article-nav-title">android事件分发机制</div>
     </a>
   
 </nav>
@@ -165,7 +349,7 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/08/26/android-touchevent/" data-title="android事件分发机制" data-url="http://dreamhigh.club/2016/08/26/android-touchevent/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/08/30/android-backstack-flag/" data-title="android Backstack和Task测试" data-url="http://dreamhigh.club/2016/08/30/android-backstack-flag/"></div>
   </section>
 </section>
       

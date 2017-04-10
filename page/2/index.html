@@ -83,6 +83,57 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-migrate-maven-to-gradle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/20/migrate-maven-to-gradle/" class="article-date">
+  <time datetime="2016-01-20T07:59:00.000Z" itemprop="datePublished">2016-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/20/migrate-maven-to-gradle/">将Maven工程迁移为Gradle工程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="u524D_u8A00_uFF1A"><a href="#u524D_u8A00_uFF1A" class="headerlink" title="前言："></a>前言：</h4><p>github上 很多开源项目是用maven构建的，比如okhttp,retrofit,现在android开发都迁移到Android Studio上来了，要直接导入看源码还是有点费劲。AS 1.5版本是能直接导入maven项目的，升级到2.0后，导入没有反应，也不会自动下载依赖包。（蛋疼）不知Google为啥把这个功能给移除了。这里就介绍一下手动迁移maven工程（Mac环境）</p>
+<h4 id="u4E00_u3001_u5C06_u4E0B_u8F7D_u7684maven_u5DE5_u7A0B_u7528AS_u6253_u5F00_uFF0CFile_-_26gt_3B_Open"><a href="#u4E00_u3001_u5C06_u4E0B_u8F7D_u7684maven_u5DE5_u7A0B_u7528AS_u6253_u5F00_uFF0CFile_-_26gt_3B_Open" class="headerlink" title="一、将下载的maven工程用AS打开，File -&gt; Open"></a>一、将下载的maven工程用AS打开，<code>File</code> -&gt; <code>Open</code></h4><h4 id="u4E8C_u3001_u8FD0_u884Cgradle_u547D_u4EE4_uFF0C_u5982_u679C_u7535_u8111_u4E0A_u6CA1_u6709gradle_u547D_u4EE4_u73AF_u5883_u5C31_u5148_u4E0B_u8F7D_u4E00_u4E2A"><a href="#u4E8C_u3001_u8FD0_u884Cgradle_u547D_u4EE4_uFF0C_u5982_u679C_u7535_u8111_u4E0A_u6CA1_u6709gradle_u547D_u4EE4_u73AF_u5883_u5C31_u5148_u4E0B_u8F7D_u4E00_u4E2A" class="headerlink" title="二、运行gradle命令，如果电脑上没有gradle命令环境就先下载一个"></a>二、运行gradle命令，如果电脑上没有gradle命令环境就先下载一个</h4><blockquote>
+<p>1、参照：<a href="http://gradle.org/migrating-a-maven-build-to-gradle/" target="_blank" rel="external">http://gradle.org/migrating-a-maven-build-to-gradle/</a><br>2、依次运行下面的命令，示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Users/shujian/android/gradle/bin/gradle init    </span><br><span class="line">/Users/shujian/android/gradle/bin/gradle build</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A"><a href="#u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A" class="headerlink" title="三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法："></a>三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法：</h4><blockquote>
+<p>1、 新建一个module,选择java library。此时pom项目都会出现在Android模式下，现在再把<br>刚才新建的module删除即可<br>2、不新建module,将项目关闭重新打开，此时会会有是否应用gradle wrapper 的提示，选择应<br>用建议，OK！</p>
+</blockquote>
+<p>补充：<br>有些项目，执行<code>/Users/shujian/android/gradle/bin/gradle build</code>失败，解决方法：关闭项目，重新打开。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/01/20/migrate-maven-to-gradle/" data-id="cispkv6rt000fvh31sryrdawy" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-android-look" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/04/android-look/" class="article-date">
@@ -121,7 +172,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="cisfhorbu00176i31zw3frbj9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/04/android-look/" data-id="cispkv6sg0017vh31xkn9m09s" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -167,7 +218,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/01/01/new-year-declare/" data-id="cisfhorb4000d6i31xznfeemf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/01/01/new-year-declare/" data-id="cispkv6rr000dvh31swkbg3fe" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -214,7 +265,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/30/android-studio-issue/" data-id="cisfhorbq00136i31mbjz4386" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/30/android-studio-issue/" data-id="cispkv6sc0013vh31bwj0r3iq" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -285,7 +336,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/30/android-new-skill/" data-id="cisfhorbr00166i31vmhxucac" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/30/android-new-skill/" data-id="cispkv6se0016vh31puvw9n14" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -338,7 +389,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/23/git-simple-usage/" data-id="cisfhorbj000u6i31ss4typ0y" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/23/git-simple-usage/" data-id="cispkv6s6000uvh31g2rhqjxl" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -389,7 +440,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2015/12/18/Python之环境工具篇/" data-id="cisfhorbx001d6i318ja1xqw0" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2015/12/18/Python之环境工具篇/" data-id="cispkv6sm001hvh31mu646qqj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -398,58 +449,6 @@ var _hmt = _hmt || [];
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo-issue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/17/hexo-issue/" class="article-date">
-  <time datetime="2015-12-17T08:49:21.000Z" itemprop="datePublished">2015-12-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/17/hexo-issue/">hexo使用问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>初入<a href="https://hexo.io/zh-cn/">Hexo</a>,感觉很酷，一切都是自己控制，要的就是这feel。作为一个js与css的半小白，想要hexo用着顺手，让blog显示自己想要的效果还是踩了不少坑的。</p>
-<h4 id="1_u3001_u5207_u6362_u4E3B_u9898_u540E_uFF0C_u65B0_u751F_u6210_u7684_u9875_u9762_u663E_u793A_u4F1A_u4E71_uFF1F"><a href="#1_u3001_u5207_u6362_u4E3B_u9898_u540E_uFF0C_u65B0_u751F_u6210_u7684_u9875_u9762_u663E_u793A_u4F1A_u4E71_uFF1F" class="headerlink" title="1、切换主题后，新生成的页面显示会乱？"></a>1、切换主题后，新生成的页面显示会乱？</h4><blockquote>
-<p>缓存的问题，执行<code>hexo clean</code></p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/17/hexo-issue/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2015/12/17/hexo-issue/" data-id="cisfhorbf000q6i31bbx2xmav" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2015/12/17/hexo-issue/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -473,7 +472,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Foundation/">Foundation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -482,7 +481,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
+      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Foundation/" style="font-size: 10px;">Foundation</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
     </div>
   </div>
 
@@ -491,7 +490,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -501,6 +500,10 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/30/android-backstack-flag/">android Backstack和Task测试</a>
+          </li>
         
           <li>
             <a href="/2016/08/26/android-touchevent/">android事件分发机制</a>
@@ -516,10 +519,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2016/03/30/helpful-websites/">有用的网站整理</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/29/mac-command-line-tool-use/">Mac常见命令行工具的使用</a>
           </li>
         
       </ul>

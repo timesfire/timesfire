@@ -83,6 +83,186 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-android-backstack-flag" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/30/android-backstack-flag/" class="article-date">
+  <time datetime="2016-08-30T08:23:59.000Z" itemprop="datePublished">2016-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/30/android-backstack-flag/">android Backstack和Task测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h5><table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>launchMode</th>
+<th>taskAffinity</th>
+<th>allowTaskReparenting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>standard</td>
+<td>com.timesfire.backstacktest</td>
+<td>false </td>
+</tr>
+<tr>
+<td>A<sub>1</sub></td>
+<td>standard</td>
+<td>com.timesfire.backstacktest</td>
+<td>false </td>
+</tr>
+<tr>
+<td>A<sub>2</sub></td>
+<td>standard</td>
+<td>com.timesfire.backstacktest</td>
+<td>false </td>
+</tr>
+<tr>
+<td>B</td>
+<td>singleTop</td>
+<td>com.timesfire.backstacktest</td>
+<td>false</td>
+</tr>
+<tr>
+<td>C</td>
+<td>singleTask</td>
+<td>com.timesfire.backstacktest</td>
+<td>false</td>
+</tr>
+<tr>
+<td>D</td>
+<td>singleInstance</td>
+<td>com.timesfire.backstacktest</td>
+<td>false</td>
+</tr>
+<tr>
+<td>E</td>
+<td>standard</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+<tr>
+<td>F</td>
+<td>singleTop</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+<tr>
+<td>G</td>
+<td>singleTask</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+<tr>
+<td>H</td>
+<td>singleInstance</td>
+<td>com.sujian</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h5 id="u6D4B_u8BD5_u6570_u636E"><a href="#u6D4B_u8BD5_u6570_u636E" class="headerlink" title="测试数据"></a>测试数据</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">初始Activity栈</th>
+<th>启动目标Activity</th>
+<th>addFlags</th>
+<th>结果 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td>A<sub>1</sub> 、 A<sub>2</sub> 、B、C、E、F</td>
+<td>无</td>
+<td>A与目标Activity在同一个Task中 </td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>D、G、H</td>
+<td>无</td>
+<td>会启动新的Task，A与目标Activity在不同Task中</td>
+</tr>
+<tr>
+<td style="text-align:center">A-&gt;C-&gt;A<sub>1</sub>-&gt;A<sub>2</sub></td>
+<td>C</td>
+<td>无</td>
+<td>不会开启新的Activity C，首先A<sub>1</sub>会销毁，接着C中调用onNewIntent()方法,最后A<sub>2</sub>销毁</td>
+</tr>
+<tr>
+<td style="text-align:center">A-&gt;G</td>
+<td>C</td>
+<td>无</td>
+<td>新启动一个C放在和A同一个Task中，G在另一个Task中 </td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>E</td>
+<td><code>FLAG_ACTIVITY_NEW_TASK</code></td>
+<td>E 在一个新的Task中启动，与A所在的Task不同</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>A<sub>1</sub></td>
+<td><code>FLAG_ACTIVITY_NEW_TASK</code>、 <code>FLAG_ACTIVITY_MULTIPLE_TASK</code></td>
+<td>A<sub>1</sub> 在一个新的Task中启动，与A所在的Task不同。这个始终会开启一个新的Task</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td>C</td>
+<td><code>FLAG_ACTIVITY_NEW_TASK</code><br> 或<br> <code>FLAG_ACTIVITY_NEW_TASK</code>、<br><code>FLAG_ACTIVITY_MULTIPLE_TASK</code><br>或 <br><code>FLAG_ACTIVITY_MULTIPLE_TASK</code></td>
+<td>A、C在同一个Task中，Flags标签对singleTask不起作用</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>FLAG_ACTIVITY_CLEAR_TOP</code><br>如果正在启动的 Activity 已在当前任务中运行，则会销毁当前任务顶部的所有 Activity，并通过 onNewIntent() 将此 Intent 传递给 Activity 已恢复的实例（现在位于顶部），而不是启动该 Activity 的新实例。<br>产生这种行为的 launchMode 属性没有值。<br>默认情况 launchMode 的值为  “standard” ，所以这种情况下，当目标Activity已经存在的时，使用这个标记不会调用目标Activity的 onNewIntent()方法，会将目标Activity销毁重建。<br>如果将FLAG_ACTIVITY_CLEAR_TOP和FLAG_ACTIVITY_SINGLE_TOP组合使用则会掉用目标Activity的onNewIntent()事件，这种情况下类似于使用launchMode＝“singleTask”</li>
+</ul>
+<ul>
+<li><p>“singleTask”<br>并不会始终创建新的Task，如果taskAffinity与启动它的activity不同才会重新创建。<code>FLAG_ACTIVITY_NEW_TASK</code>也需要配置taskAffinity才会生效。<br>使用singleTask去开启一个刚启动过的Activity，会掉用onNewIntent()方法，而使用<code>FLAG_ACTIVITY_NEW_TASK</code>去启动一个刚用<code>FLAG_ACTIVITY_NEW_TASK</code>启动过的Activity不会用任何操作，如果Activity位于其它的Task中会切换Task，除此之外不会有其它操作了，着重点在Task上。</p>
+</li>
+<li><p><code>FLAG_ACTIVITY_FORWARD_RESULT</code><br>这个标示可以用在多个activity交互过程中，比如<code>A</code> startActivityForResult <code>B</code>，这个时候如果 <code>B</code> startActivity <code>C</code> ，并且传人这个标示，则在<code>C</code>中setResult，<code>A</code>会收到结果，同时不管<code>C</code>中是否调用setResult方法，<code>B</code>中的setResult都会失效</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/08/30/android-backstack-flag/" data-id="cispkv6sj001dvh31sb0licw8" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://dreamhigh.club/2016/08/30/android-backstack-flag/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Foundation/">Foundation</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-android-touchevent" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/26/android-touchevent/" class="article-date">
@@ -121,7 +301,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/08/26/android-touchevent/" data-id="cisfhorbl000x6i31u0iv7znq" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/08/26/android-touchevent/" data-id="cispkv6s8000xvh31px17a2jl" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -171,7 +351,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/08/04/android-decompile/" data-id="cisfhorbv00196i31ode5412o" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/08/04/android-decompile/" data-id="cispkv6sh0019vh31m30pejkm" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -233,7 +413,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="cisfhorb100086i31nhngkf7p" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="cispkv6rp0008vh31ny7azxsn" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -285,7 +465,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="cisfhorbh000t6i31vts4ydee" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="cispkv6s5000tvh31stp5pcjd" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -333,7 +513,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="cisfhorbb000m6i310xvc4d0q" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="cispkv6rz000mvh31vh5ffklf" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -383,7 +563,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cisfhoraq00006i31n7z386dh" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cispkv6rd0000vh31vysw2one" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -392,57 +572,6 @@ var _hmt = _hmt || [];
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-migrate-maven-to-gradle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/20/migrate-maven-to-gradle/" class="article-date">
-  <time datetime="2016-01-20T07:59:00.000Z" itemprop="datePublished">2016-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/20/migrate-maven-to-gradle/">将Maven工程迁移为Gradle工程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="u524D_u8A00_uFF1A"><a href="#u524D_u8A00_uFF1A" class="headerlink" title="前言："></a>前言：</h4><p>github上 很多开源项目是用maven构建的，比如okhttp,retrofit,现在android开发都迁移到Android Studio上来了，要直接导入看源码还是有点费劲。AS 1.5版本是能直接导入maven项目的，升级到2.0后，导入没有反应，也不会自动下载依赖包。（蛋疼）不知Google为啥把这个功能给移除了。这里就介绍一下手动迁移maven工程（Mac环境）</p>
-<h4 id="u4E00_u3001_u5C06_u4E0B_u8F7D_u7684maven_u5DE5_u7A0B_u7528AS_u6253_u5F00_uFF0CFile_-_26gt_3B_Open"><a href="#u4E00_u3001_u5C06_u4E0B_u8F7D_u7684maven_u5DE5_u7A0B_u7528AS_u6253_u5F00_uFF0CFile_-_26gt_3B_Open" class="headerlink" title="一、将下载的maven工程用AS打开，File -&gt; Open"></a>一、将下载的maven工程用AS打开，<code>File</code> -&gt; <code>Open</code></h4><h4 id="u4E8C_u3001_u8FD0_u884Cgradle_u547D_u4EE4_uFF0C_u5982_u679C_u7535_u8111_u4E0A_u6CA1_u6709gradle_u547D_u4EE4_u73AF_u5883_u5C31_u5148_u4E0B_u8F7D_u4E00_u4E2A"><a href="#u4E8C_u3001_u8FD0_u884Cgradle_u547D_u4EE4_uFF0C_u5982_u679C_u7535_u8111_u4E0A_u6CA1_u6709gradle_u547D_u4EE4_u73AF_u5883_u5C31_u5148_u4E0B_u8F7D_u4E00_u4E2A" class="headerlink" title="二、运行gradle命令，如果电脑上没有gradle命令环境就先下载一个"></a>二、运行gradle命令，如果电脑上没有gradle命令环境就先下载一个</h4><blockquote>
-<p>1、参照：<a href="http://gradle.org/migrating-a-maven-build-to-gradle/" target="_blank" rel="external">http://gradle.org/migrating-a-maven-build-to-gradle/</a><br>2、依次运行下面的命令，示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Users/shujian/android/gradle/bin/gradle init    </span><br><span class="line">/Users/shujian/android/gradle/bin/gradle build</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A"><a href="#u4E09_u3001_u5B8C_u6210_u4E0A_u9762_u7684_u6B65_u9AA4_uFF0C_u6B64_u65F6Android_u6A21_u5F0F_u4E0B_u4F9D_u7136_u4E3A_u7A7A_u3002_u53EF_u4EE5_u7528_u4E24_u79CD_u65B9_u6CD5_uFF1A" class="headerlink" title="三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法："></a>三、完成上面的步骤，此时Android模式下依然为空。可以用两种方法：</h4><blockquote>
-<p>1、 新建一个module,选择java library。此时pom项目都会出现在Android模式下，现在再把<br>刚才新建的module删除即可<br>2、不新建module,将项目关闭重新打开，此时会会有是否应用gradle wrapper 的提示，选择应<br>用建议，OK！</p>
-</blockquote>
-<p>补充：<br>有些项目，执行<code>/Users/shujian/android/gradle/bin/gradle build</code>失败，解决方法：关闭项目，重新打开。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/01/20/migrate-maven-to-gradle/" data-id="cisfhorb5000f6i31e7jjfigj" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li></ul>
 
     </footer>
   </div>
@@ -466,7 +595,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Foundation/">Foundation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -475,7 +604,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
+      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Foundation/" style="font-size: 10px;">Foundation</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
     </div>
   </div>
 
@@ -484,7 +613,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -494,6 +623,10 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/30/android-backstack-flag/">android Backstack和Task测试</a>
+          </li>
         
           <li>
             <a href="/2016/08/26/android-touchevent/">android事件分发机制</a>
@@ -509,10 +642,6 @@ var _hmt = _hmt || [];
         
           <li>
             <a href="/2016/03/30/helpful-websites/">有用的网站整理</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/29/mac-command-line-tool-use/">Mac常见命令行工具的使用</a>
           </li>
         
       </ul>

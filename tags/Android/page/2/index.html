@@ -4,25 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android事件分发机制 | 梦萌的小case</title>
+  <title>Tag: Android | 梦萌的小case</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图：
-二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以">
-<meta property="og:type" content="article">
-<meta property="og:title" content="android事件分发机制">
-<meta property="og:url" content="http://dreamhigh.club/2016/08/26/android-touchevent/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梦萌的小case">
+<meta property="og:url" content="http://dreamhigh.club/tags/Android/page/2/index.html">
 <meta property="og:site_name" content="梦萌的小case">
-<meta property="og:description" content="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图：
-二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以">
-<meta property="og:image" content="http://dreamhigh.club/images/QQ20160826-0@2x.png">
-<meta property="og:image" content="http://dreamhigh.club//images/QQ20160829-activity@2x.png">
-<meta property="og:image" content="http://dreamhigh.club//images/QQ20160829-viewgroup@2x.png">
-<meta property="og:image" content="http://dreamhigh.club/images/QQ20160829-view@2x.png">
-<meta property="og:updated_time" content="2016-08-29T02:56:31.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android事件分发机制">
-<meta name="twitter:description" content="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图：
-二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以">
+<meta name="twitter:title" content="梦萌的小case">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
   
@@ -89,84 +81,39 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-android-touchevent" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/26/android-touchevent/" class="article-date">
-  <time datetime="2016-08-26T01:16:18.000Z" itemprop="datePublished">2016-08-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      android事件分发机制
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2015/12/12/android-studio-unit-test/" class="archive-article-date">
+  <time datetime="2015-12-12T08:02:36.000Z" itemprop="datePublished">12月 12</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/12/12/android-studio-unit-test/">Android Studio 单元测试</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="u4E00_u3001android_u4E8B_u4EF6_u5206_u53D1_u9996_u5148_u4ECE_MotionEvent-ACTION_DOWN__u4E8B_u4EF6_u5F00_u59CB_uFF0CACTION_DOWN__u4E8B_u4EF6_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_u56FE_uFF1A"><a href="#u4E00_u3001android_u4E8B_u4EF6_u5206_u53D1_u9996_u5148_u4ECE_MotionEvent-ACTION_DOWN__u4E8B_u4EF6_u5F00_u59CB_uFF0CACTION_DOWN__u4E8B_u4EF6_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_u56FE_uFF1A" class="headerlink" title="一、android事件分发首先从 MotionEvent.ACTION_DOWN 事件开始，ACTION_DOWN 事件的分发流程如下图："></a>一、android事件分发首先从 <code>MotionEvent.ACTION_DOWN</code> 事件开始，<code>ACTION_DOWN</code> 事件的分发流程如下图：</h5><p><img src="/images/QQ20160826-0@2x.png" alt="图1"></p>
-<h5 id="u4E8C_u3001MotionEvent-ACTION_UP_u4E8B_u4EF6_u5206_u53D1_u4F1A_u53D7_u5230ACTION_DOWN_u4E8B_u4EF6_u5206_u53D1_u7ED3_u679C_u7684_u5F71_u54CD_u3002_u6211_u4EEC_u628AACTION_DOWN_u4E8B_u4EF6_u4E2D_u6B62_u5411_u4E0B_u5206_u53D1_u5904_u5F53_u4F5C_u4E00_u4E2A_u8282_u70B9_uFF0C_u5982_u4E0A_u56FE_uFF0C_u53EF_u80FD_u7684_u8282_u70B9_u67096_u4E2A_u3002android_u4E8B_u4EF6_u5206_u53D1_u5177_u6709_u6D88_u8D39_u673A_u5236_uFF0C_u5728_u8FD96_u4E2A_u8282_u70B9_u4E2D_u6309_u7167_u6D88_u8D39_u5BF9_u8C61_u6765_u5206_u53C8_u53EF_u4EE5_u5206_u4E3A_u4E09_u7C7B_uFF1A"><a href="#u4E8C_u3001MotionEvent-ACTION_UP_u4E8B_u4EF6_u5206_u53D1_u4F1A_u53D7_u5230ACTION_DOWN_u4E8B_u4EF6_u5206_u53D1_u7ED3_u679C_u7684_u5F71_u54CD_u3002_u6211_u4EEC_u628AACTION_DOWN_u4E8B_u4EF6_u4E2D_u6B62_u5411_u4E0B_u5206_u53D1_u5904_u5F53_u4F5C_u4E00_u4E2A_u8282_u70B9_uFF0C_u5982_u4E0A_u56FE_uFF0C_u53EF_u80FD_u7684_u8282_u70B9_u67096_u4E2A_u3002android_u4E8B_u4EF6_u5206_u53D1_u5177_u6709_u6D88_u8D39_u673A_u5236_uFF0C_u5728_u8FD96_u4E2A_u8282_u70B9_u4E2D_u6309_u7167_u6D88_u8D39_u5BF9_u8C61_u6765_u5206_u53C8_u53EF_u4EE5_u5206_u4E3A_u4E09_u7C7B_uFF1A" class="headerlink" title="二、MotionEvent.ACTION_UP事件分发会受到ACTION_DOWN事件分发结果的影响。我们把ACTION_DOWN事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以分为三类："></a>二、<code>MotionEvent.ACTION_UP</code>事件分发会受到<code>ACTION_DOWN</code>事件分发结果的影响。我们把<code>ACTION_DOWN</code>事件中止向下分发处当作一个节点，如上图，可能的节点有6个。android事件分发具有消费机制，在这6个节点中按照消费对象来分又可以分为三类：</h5><ul>
-<li><u><font color="#ff7f50" size="4">1</font></u>、<u><font color="#ff7f50" size="4">6</font></u>对应消费者为Activity，</li>
-<li><u><font color="#ff7f50" size="4">2</font></u>、<u><font color="#ff7f50" size="4">5</font></u>对应消费者为ViewGroup，</li>
-<li><u><font color="#ff7f50" size="4">3</font></u>、<u><font color="#ff7f50" size="4">4</font></u>对应消费者为View。</li>
-</ul>
-<p>通常情况下，如果一个对象消费了<code>ACTION_DOWN</code>事件，android系统会认为这个对象可能也会消费<code>ACTION_UP</code>事件。相对的如果一个对象没有消费<code>ACTION_DOWN</code>事件，那么android系统会认为这个对象也不会消费<code>ACTION_UP</code>事件，在<code>ACTION_UP</code>事件传递过程中就会跳过这个对象。<br>以下根据这3类情况来探讨<code>ACTION_UP</code>事件的分发流程。</p>
-<h6 id="1_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABActivity_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#1_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABActivity_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="1、ACTION_DOWN事件被Activity消费时，ACTION_UP的分发流程如下："></a>1、<code>ACTION_DOWN</code>事件被Activity消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-activity@2x.png" width="400" alt="图2" align="center"></p>
-<h6 id="2_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABViewGroup_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#2_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABViewGroup_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="2、ACTION_DOWN事件被ViewGroup消费时，ACTION_UP的分发流程如下："></a>2、<code>ACTION_DOWN</code>事件被ViewGroup消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-viewgroup@2x.png" width="700" alt="图3" align="center"></p>
-<h6 id="3_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABView_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A"><a href="#3_u3001ACTION_DOWN_u4E8B_u4EF6_u88ABView_u6D88_u8D39_u65F6_uFF0CACTION_UP_u7684_u5206_u53D1_u6D41_u7A0B_u5982_u4E0B_uFF1A" class="headerlink" title="3、ACTION_DOWN事件被View消费时，ACTION_UP的分发流程如下："></a>3、<code>ACTION_DOWN</code>事件被View消费时，<code>ACTION_UP</code>的分发流程如下：</h6><p><img src="/images/QQ20160829-view@2x.png" alt="图4"></p>
-<p>测试工程稍后会放到<a href="https://github.com/timesfire" target="_blank" rel="external">Github</a>上，欢迎follow</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/08/26/android-touchevent/" data-id="cispkv6s8000xvh31px17a2jl" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2016/08/26/android-touchevent/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/View/">View</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/08/30/android-backstack-flag/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          android Backstack和Task测试
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/08/04/android-decompile/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">android逆向工程</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/08/26/android-touchevent/" data-title="android事件分发机制" data-url="http://dreamhigh.club/2016/08/26/android-touchevent/"></div>
-  </section>
+  
+  
+    </div></section>
+  
 </section>
       
       <aside id="sidebar">
