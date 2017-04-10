@@ -4,19 +4,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>梦萌的小case</title>
+  <title>timesfire的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="梦萌的小case">
+<meta property="og:title" content="timesfire的博客">
 <meta property="og:url" content="http://dreamhigh.club/index.html">
-<meta property="og:site_name" content="梦萌的小case">
+<meta property="og:site_name" content="timesfire的博客">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="梦萌的小case">
+<meta name="twitter:title" content="timesfire的博客">
 <meta name="twitter:description">
   
-    <link rel="alternative" href="/atom.xml" title="梦萌的小case" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="timesfire的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -44,11 +44,11 @@ var _hmt = _hmt || [];
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">梦萌的小case</a>
+        <a href="/" id="logo">timesfire的博客</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">走在村边的小路上...</a>
+          <a href="/" id="subtitle">记录点滴</a>
         </h2>
       
     </div>
@@ -83,6 +83,147 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-android-fragment-note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/10/android-fragment-note/" class="article-date">
+  <time datetime="2016-09-10T04:06:05.000Z" itemprop="datePublished">2016-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/10/android-fragment-note/">Fragment注意事项</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>Fragemnt的setArguments() 只能在onAttach()方法之前执行</li>
+<li>replace方法，如果针对的是一个ViewGroup，</li>
+<li><code>getSupportFragmentManager().beginTransaction().replace(R.id.content, blankFragment).commit();</code> R.id.content 对应的是一个ViewGroup，则会作为子View ，add到里面去，ViewGroup布局文件中的子布局会保留。如果之前已经替换过一次,则会先移除之前的Fragment，再add</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/09/10/android-fragment-note/" data-id="cj1bpt15n001bgc9ogjas0qq5" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fragment/">Fragment</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android-custom-view" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/09/android-custom-view/" class="article-date">
+  <time datetime="2016-09-09T06:29:08.000Z" itemprop="datePublished">2016-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/09/android-custom-view/">android自定义View</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="u7EE7_u627FViewGroup_u7684_u5B50_u7C7B_uFF0C_u4E3A_u4E86_u4F18_u5316_u6027_u80FD_u9ED8_u8BA4_u4E0D_u4F1A_u6267_u884ConDraw_28_29_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u4EE5_u4E0B_u66FF_u4EE3_u7684_u65B9_u6CD5_uFF08_u4EFB_u9009_u5176_u4E00_uFF09"><a href="#u7EE7_u627FViewGroup_u7684_u5B50_u7C7B_uFF0C_u4E3A_u4E86_u4F18_u5316_u6027_u80FD_u9ED8_u8BA4_u4E0D_u4F1A_u6267_u884ConDraw_28_29_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u4EE5_u4E0B_u66FF_u4EE3_u7684_u65B9_u6CD5_uFF08_u4EFB_u9009_u5176_u4E00_uFF09" class="headerlink" title="继承ViewGroup的子类，为了优化性能默认不会执行onDraw()方法。可以使用以下替代的方法（任选其一）"></a>继承ViewGroup的子类，为了优化性能默认不会执行onDraw()方法。可以使用以下替代的方法（任选其一）</h5><blockquote>
+<p>1、在构造函数中setWillNotDraw(false)开启<br>2、使用dispatchDraw(）方法<br>3、设置自定义组件的背景，这时会使onDraw()方法生效    </p>
+</blockquote>
+<h5 id="u7EE7_u627FView_u7684_u81EA_u5B9A_u4E49_u7EC4_u4EF6_uFF0C_u6CE8_u610F_u70B9"><a href="#u7EE7_u627FView_u7684_u81EA_u5B9A_u4E49_u7EC4_u4EF6_uFF0C_u6CE8_u610F_u70B9" class="headerlink" title="继承View的自定义组件，注意点"></a>继承View的自定义组件，注意点</h5><blockquote>
+<p>1、一般不用覆写onLayout()方法，这个方法一般是为友子view的组件准备的<br>2、调用invalidate()，只会刷新view的onDraw()方法<br>3、如果View的边界大小改变，要通过requestLayout()来刷新View，这个时候会掉用view的onMeasure(),(如果大小改变)onSizeChanged(),onLayout(),onDraw()方法。在这个过程中onMeasure()可能会被调用多次。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/09/09/android-custom-view/" data-id="cj1bpt15s001jgc9o9e92okfz" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Base/">Base</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webview-debug" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/05/webview-debug/" class="article-date">
+  <time datetime="2016-09-05T09:29:32.000Z" itemprop="datePublished">2016-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/05/webview-debug/">Android Webview调试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>WebView 可以连接chrome进行调试，首先webview的调试模式打开(参照<code>Remote Debugging WebViews</code>)</li>
+</ul>
+<h4 id="Remote_Debugging_WebViews"><a href="#Remote_Debugging_WebViews" class="headerlink" title="Remote Debugging WebViews"></a>Remote Debugging WebViews</h4><p><a href="https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/webviews?hl=en" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/webviews?hl=en</a></p>
+<h4 id="Remote_Debugging_Android_Devices"><a href="#Remote_Debugging_Android_Devices" class="headerlink" title="Remote Debugging Android Devices"></a>Remote Debugging Android Devices</h4><p><a href="https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en</a></p>
+<h4 id="Access_Local_Servers"><a href="#Access_Local_Servers" class="headerlink" title="Access Local Servers"></a>Access Local Servers</h4><p><a href="https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/local-server?hl=en" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/local-server?hl=en</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://dreamhigh.club/2016/09/05/webview-debug/" data-id="cj1bpt14k0001gc9ojpww56lb" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-android-backstack-flag" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/30/android-backstack-flag/" class="article-date">
@@ -97,7 +238,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/30/android-backstack-flag/">android Backstack和Task测试</a>
+      <a class="article-title" href="/2016/08/30/android-backstack-flag/">android Backstack和Task详解</a>
     </h1>
   
 
@@ -227,13 +368,12 @@ var _hmt = _hmt || [];
 <td style="text-align:center">A</td>
 <td>C</td>
 <td><code>FLAG_ACTIVITY_NEW_TASK</code><br> 或<br> <code>FLAG_ACTIVITY_NEW_TASK</code>、<br><code>FLAG_ACTIVITY_MULTIPLE_TASK</code><br>或 <br><code>FLAG_ACTIVITY_MULTIPLE_TASK</code></td>
-<td>A、C在同一个Task中，Flags标签对singleTask不起作用</td>
-<td></td>
+<td>A、C在同一个Task中，Flags标签对singleTask不起作用 </td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><code>FLAG_ACTIVITY_CLEAR_TOP</code><br>如果正在启动的 Activity 已在当前任务中运行，则会销毁当前任务顶部的所有 Activity，并通过 onNewIntent() 将此 Intent 传递给 Activity 已恢复的实例（现在位于顶部），而不是启动该 Activity 的新实例。<br>产生这种行为的 launchMode 属性没有值。<br>默认情况 launchMode 的值为  “standard” ，所以这种情况下，当目标Activity已经存在的时，使用这个标记不会调用目标Activity的 onNewIntent()方法，会将目标Activity销毁重建。<br>如果将FLAG_ACTIVITY_CLEAR_TOP和FLAG_ACTIVITY_SINGLE_TOP组合使用则会掉用目标Activity的onNewIntent()事件，这种情况下类似于使用launchMode＝“singleTask”</li>
+<li><code>FLAG_ACTIVITY_CLEAR_TOP</code><br>如果正在启动的 Activity 已在当前任务中运行，则会销毁当前任务顶部的所有 Activity，并通过 onNewIntent() 将此 Intent 传递给 Activity 已恢复的实例（现在位于顶部），而不是启动该 Activity 的新实例。<br>产生这种行为的 launchMode 属性没有值。<br>默认情况 launchMode 的值为  “standard” ，所以这种情况下，当目标Activity已经存在的时，使用这个标记不会调用目标Activity的 onNewIntent()方法，会将目标Activity销毁重建。<br>如果将FLAG_ACTIVITY_CLEAR_TOP和FLAG_ACTIVITY_SINGLE_TOP组合使用则会调用目标Activity的onNewIntent()事件，这种情况下类似于使用launchMode＝“singleTask”</li>
 </ul>
 <ul>
 <li><p>“singleTask”<br>并不会始终创建新的Task，如果taskAffinity与启动它的activity不同才会重新创建。<code>FLAG_ACTIVITY_NEW_TASK</code>也需要配置taskAffinity才会生效。<br>使用singleTask去开启一个刚启动过的Activity，会掉用onNewIntent()方法，而使用<code>FLAG_ACTIVITY_NEW_TASK</code>去启动一个刚用<code>FLAG_ACTIVITY_NEW_TASK</code>启动过的Activity不会用任何操作，如果Activity位于其它的Task中会切换Task，除此之外不会有其它操作了，着重点在Task上。</p>
@@ -246,7 +386,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/08/30/android-backstack-flag/" data-id="cispkv6sj001dvh31sb0licw8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/08/30/android-backstack-flag/" data-id="cj1bpt15v001ngc9o37bv7glu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -301,7 +441,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/08/26/android-touchevent/" data-id="cispkv6s8000xvh31px17a2jl" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/08/26/android-touchevent/" data-id="cj1bpt15c000zgc9obmynpb1v" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -351,7 +491,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/08/04/android-decompile/" data-id="cispkv6sh0019vh31m30pejkm" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/08/04/android-decompile/" data-id="cj1bpt15p001fgc9oanxh55wa" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -413,7 +553,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="cispkv6rp0008vh31ny7azxsn" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://dreamhigh.club/2016/07/04/pulish-library-to-jcenter/" data-id="cj1bpt14s000agc9ou1zko084" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -430,159 +570,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-helpful-websites" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/30/helpful-websites/" class="article-date">
-  <time datetime="2016-03-30T06:47:54.000Z" itemprop="datePublished">2016-03-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/30/helpful-websites/">有用的网站整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1_u3001_u67E5_u770Bjar_u5305_u7684_u65B9_u6CD5_u6570"><a href="#1_u3001_u67E5_u770Bjar_u5305_u7684_u65B9_u6CD5_u6570" class="headerlink" title="1、查看jar包的方法数"></a>1、查看jar包的方法数</h5><p><a href="http://www.methodscount.com">http://www.methodscount.com</a></p>
-<h5 id="2_u3001_u67E5_u770Bapk_u7684_u65B9_u6CD5_u6570"><a href="#2_u3001_u67E5_u770Bapk_u7684_u65B9_u6CD5_u6570" class="headerlink" title="2、查看apk的方法数"></a>2、查看apk的方法数</h5><p><a href="http://inloop.github.io/apk-method-count">http://inloop.github.io/apk-method-count</a></p>
-<h4 id="3_u3001TinyPng"><a href="#3_u3001TinyPng" class="headerlink" title="3、TinyPng"></a>3、TinyPng</h4><p><a href="https://tinypng.com">https://tinypng.com</a>  </p>
-<p>TinyPng 是一个图片压缩工具，可能有些人感觉这个工具应该给设计师使用，我觉得也是。不过有些时候，设计师给你出了个1920* 1080 的启动页，一张图片，1M 左右，我也是泪奔了，感觉设计师说话的时间，估计我们都压缩完了，自己动手，丰衣足食。而且它还提供了API，对不同语言都还有提供了插件，比如Java 就提供了Maven 的支持。<br>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/30/helpful-websites/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/03/30/helpful-websites/" data-id="cispkv6s5000tvh31stp5pcjd" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mac-command-line-tool-use" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/29/mac-command-line-tool-use/" class="article-date">
-  <time datetime="2016-03-29T07:57:43.000Z" itemprop="datePublished">2016-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/29/mac-command-line-tool-use/">Mac常见命令行工具的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1_u3001brew_Mac_u4E0B_u7684_u5305_u7BA1_u7406_u5DE5_u5177"><a href="#1_u3001brew_Mac_u4E0B_u7684_u5305_u7BA1_u7406_u5DE5_u5177" class="headerlink" title="1、brew Mac下的包管理工具"></a>1、brew Mac下的包管理工具</h4><p>常用命令:</p>
-<blockquote>
-<p>列出软件： <code>brew list</code><br>安装软件： <code>brew install sss</code><br>卸载软件： <code>brew uninstall sss</code><br>搜索软件： <code>brew search /sss*/</code><br>更新brew <code>brew update</code><br>显示软件信息 <code>brew info</code>  </p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/29/mac-command-line-tool-use/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/" data-id="cispkv6rz000mvh31vh5ffklf" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2016/03/29/mac-command-line-tool-use/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-rxandroid-detail" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/02/rxandroid-detail/" class="article-date">
-  <time datetime="2016-03-02T03:11:40.000Z" itemprop="datePublished">2016-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/rxandroid-detail/">响应式编程框架RxAndroid使用简介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6"><a href="#RxJava_u9488_u5BF9Android_u7684_u5B9A_u5236_u7248_u672C_u3002_u8FD9_u4E2A_u7248_u672C_u4E2D_u901A_u8FC7_u589E_u52A0_u6700_u5C11_u7684_u7C7B_u4F7F_u5728Android_u5E94_u7528_u4E2D_u7F16_u5199_u54CD_u5E94_u5F0F_u7EC4_u4EF6_u7B80_u5355_u800C_u4E14_u65E0_u969C_u788D_uFF0C_u7279_u522B_u4E4B_u5904_u5728_u4E0E_u5B83_u8FD8_u63D0_u4F9B_u4E86_u4E00_u4E2AScheduler_uFF0C_u53EF_u4EE5_u5728_u4E3B_u7EBF_u7A0B_u6216_u4EFB_u4F55_u7ED9_u5B9A_u7684Handler_u4E0A_u8FDB_u884C_u8C03_u5EA6" class="headerlink" title="RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个Scheduler，可以在主线程或任何给定的Handler上进行调度"></a>RxJava针对Android的定制版本。这个版本中通过增加最少的类使在Android应用中编写响应式组件简单而且无障碍，特别之处在与它还提供了一个<code>Scheduler</code>，可以在主线程或任何给定的<code>Handler</code>上进行调度</h5><p>github <a href="https://github.com/ReactiveX/RxAndroid">https://github.com/ReactiveX/RxAndroid</a></p>
-<h5 id="u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F"><a href="#u4E00_u3001_u4F7F_u7528RxJava_u6709_u4EC0_u4E48_u597D_u5904_uFF0C_u600E_u6837_u5FEB_u901F_u5165_u95E8_uFF1F" class="headerlink" title="一、使用RxJava有什么好处，怎样快速入门？"></a>一、使用RxJava有什么好处，怎样快速入门？</h5>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/02/rxandroid-detail/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://dreamhigh.club/2016/03/02/rxandroid-detail/" data-id="cispkv6rd0000vh31vysw2one" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://dreamhigh.club/2016/03/02/rxandroid-detail/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -595,7 +585,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Foundation/">Foundation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AS/">AS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Base/">Base</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Foundation/">Foundation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fragment/">Fragment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/">Tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点滴/">点滴</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -604,7 +594,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Foundation/" style="font-size: 10px;">Foundation</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
+      <a href="/tags/AS/" style="font-size: 10px;">AS</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Base/" style="font-size: 10px;">Base</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Foundation/" style="font-size: 10px;">Foundation</a> <a href="/tags/Fragment/" style="font-size: 10px;">Fragment</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/View/" style="font-size: 10px;">View</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/点滴/" style="font-size: 15px;">点滴</a>
     </div>
   </div>
 
@@ -613,7 +603,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -625,23 +615,23 @@ var _hmt = _hmt || [];
       <ul>
         
           <li>
-            <a href="/2016/08/30/android-backstack-flag/">android Backstack和Task测试</a>
+            <a href="/2016/09/10/android-fragment-note/">Fragment注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/09/android-custom-view/">android自定义View</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/05/webview-debug/">Android Webview调试</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/30/android-backstack-flag/">android Backstack和Task详解</a>
           </li>
         
           <li>
             <a href="/2016/08/26/android-touchevent/">android事件分发机制</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/04/android-decompile/">android逆向工程</a>
-          </li>
-        
-          <li>
-            <a href="/2016/07/04/pulish-library-to-jcenter/">发布开源库到Jcenter和Maven Central</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/30/helpful-websites/">有用的网站整理</a>
           </li>
         
       </ul>
@@ -656,7 +646,7 @@ var _hmt = _hmt || [];
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 Jian Su   
+      &copy; 2017 Jian Su   
 
     <div id="social-font">
     
